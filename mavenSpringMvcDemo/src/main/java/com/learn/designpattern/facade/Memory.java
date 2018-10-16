@@ -3,7 +3,7 @@ package com.learn.designpattern.facade;
 import org.apache.log4j.Logger;
 
 /**
- * Memory子系统类
+ * Memory瀛愮郴缁熺被
  * @author Administrator
  *
  */

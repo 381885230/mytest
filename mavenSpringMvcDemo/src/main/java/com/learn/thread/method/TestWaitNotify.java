@@ -1,7 +1,7 @@
 package com.learn.thread.method;
 
 /**
- * Ê¹ÓÃwait()Óënotify()·½·¨Íê³ÉÏß³ÌĞ­Í¬¹¤×÷
+ * ä½¿ç”¨wait()ä¸notify()æ–¹æ³•å®Œæˆçº¿ç¨‹ååŒå·¥ä½œ
  */
 public class TestWaitNotify {
 
@@ -10,47 +10,47 @@ public class TestWaitNotify {
 
 	public static void main(String[] args) {
 
-		// ÏÂÔØÍ¼Æ¬µÄÏß³Ì
+		// ä¸‹è½½å›¾ç‰‡çš„çº¿ç¨‹
 		final Thread download = new Thread() {
 			public void run() {
-				System.out.println("download:¿ªÊ¼ÏÂÔØÍ¼Æ¬");
+				System.out.println("download:å¼€å§‹ä¸‹è½½å›¾ç‰‡");
 				for (int i = 0; i <= 100; i++) {
-					System.out.println("download:ÒÑÍê³É" + i + "%");
+					System.out.println("download:å·²å®Œæˆ" + i + "%");
 					try {
 						Thread.sleep(50);
 					} catch (InterruptedException e) {
 					}
 				}
-				System.out.println("download:Í¼Æ¬ÏÂÔØÍê±Ï");
-				isFinish = true;// ±íÊ¾Í¼Æ¬ÏÂÔØÍê±ÏÁË
+				System.out.println("download:å›¾ç‰‡ä¸‹è½½å®Œæ¯•");
+				isFinish = true;// è¡¨ç¤ºå›¾ç‰‡ä¸‹è½½å®Œæ¯•äº†
 
-				// µ±Í¼Æ¬ÏÂÔØÍê±Ïºó£¬¾Í¿ÉÒÔÍ¨ÖªshowImg¿ªÊ¼ÏÔÊ¾Í¼Æ¬ÁË
+				// å½“å›¾ç‰‡ä¸‹è½½å®Œæ¯•åï¼Œå°±å¯ä»¥é€šçŸ¥showImgå¼€å§‹æ˜¾ç¤ºå›¾ç‰‡äº†
 				synchronized (object) {
-					// Í¨ÖªÔÚobjectÉíÉÏµÈ´ıµÄÏß³Ì½â³ıµÈ´ı×èÈû
+					// é€šçŸ¥åœ¨objectèº«ä¸Šç­‰å¾…çš„çº¿ç¨‹è§£é™¤ç­‰å¾…é˜»å¡
 					object.notify();
 				}
 
-				System.out.println("download:¿ªÊ¼ÏÂÔØ¸½¼ş");
+				System.out.println("download:å¼€å§‹ä¸‹è½½é™„ä»¶");
 				for (int i = 0; i <= 100; i++) {
-					System.out.println("download:ÒÑÍê³É" + i + "%");
+					System.out.println("download:å·²å®Œæˆ" + i + "%");
 					try {
 						Thread.sleep(50);
 					} catch (InterruptedException e) {
 					}
 				}
-				System.out.println("download:¸½¼şÏÂÔØÍê±Ï");
+				System.out.println("download:é™„ä»¶ä¸‹è½½å®Œæ¯•");
 			}
 
 		};
 
-		// ÓÃÓÚÏÔÊ¾Í¼Æ¬µÄÏß³Ì
+		// ç”¨äºæ˜¾ç¤ºå›¾ç‰‡çš„çº¿ç¨‹
 		Thread showImg = new Thread() {
 			public void run() {
-				System.out.println("show:×¼±¸ÏÔÊ¾Í¼Æ¬");
-				// µÈ´ıÏÂÔØÏß³Ì½«Í¼Æ¬ÏÂÔØ½áÊøºó£¬ÔÙÖ´ĞĞÏÂÃæµÄ´úÂë
+				System.out.println("show:å‡†å¤‡æ˜¾ç¤ºå›¾ç‰‡");
+				// ç­‰å¾…ä¸‹è½½çº¿ç¨‹å°†å›¾ç‰‡ä¸‹è½½ç»“æŸåï¼Œå†æ‰§è¡Œä¸‹é¢çš„ä»£ç 
 				try {
-					// wait()×èÈû»áÔÚÒÔÏÂÁ½ÖÖÇé¿ö±»½â³ı,1:µ±downloadÏß³Ì½áÊø.
-					// 2:µ±µ÷ÓÃÁËdownloadµÄnotify()
+					// wait()é˜»å¡ä¼šåœ¨ä»¥ä¸‹ä¸¤ç§æƒ…å†µè¢«è§£é™¤,1:å½“downloadçº¿ç¨‹ç»“æŸ.
+					// 2:å½“è°ƒç”¨äº†downloadçš„notify()
 					synchronized (object) {
 						object.wait();
 					}
@@ -58,9 +58,9 @@ public class TestWaitNotify {
 					e.printStackTrace();
 				}
 				if (!isFinish) {
-					throw new RuntimeException("Í¼Æ¬Ã»ÓĞÏÂÔØÍê±Ï");
+					throw new RuntimeException("å›¾ç‰‡æ²¡æœ‰ä¸‹è½½å®Œæ¯•");
 				}
-				System.out.println("show:Í¼Æ¬ÒÑ¾­ÏÔÊ¾ÁË!");
+				System.out.println("show:å›¾ç‰‡å·²ç»æ˜¾ç¤ºäº†!");
 			}
 		};
 

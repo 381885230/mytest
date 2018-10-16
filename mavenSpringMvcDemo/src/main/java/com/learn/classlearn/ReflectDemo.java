@@ -6,18 +6,18 @@ import java.lang.reflect.Type;
 
 /**
  * Created by zejian on 2017/5/1. Blog : http://blog.csdn.net/javazejian
- * [Ô­ÎÄµØÖ·,Çë×ğÖØÔ­´´]
- * Ê¹ÓÃ·½·¨£º»ñÈ¡¹¹ÔìÆ÷--´«²ÎÊı
+ * [åŸæ–‡åœ°å€,è¯·å°Šé‡åŸåˆ›]
+ * ä½¿ç”¨æ–¹æ³•ï¼šè·å–æ„é€ å™¨--ä¼ å‚æ•°
  */
 public class ReflectDemo implements Serializable {
 	public static void main(String[] args) throws Exception {
 
 		Class<?> clazz = null;
 
-		// »ñÈ¡Class¶ÔÏóµÄÒıÓÃ
+		// è·å–Classå¯¹è±¡çš„å¼•ç”¨
 		clazz = Class.forName("com.yuanjin.classlearn.User");
 
-		// µÚÒ»ÖÖ·½·¨£¬ÊµÀı»¯Ä¬ÈÏ¹¹Ôì·½·¨£¬User±ØĞëÎŞ²Î¹¹Ôìº¯Êı,·ñÔò½«Å×Òì³£
+		// ç¬¬ä¸€ç§æ–¹æ³•ï¼Œå®ä¾‹åŒ–é»˜è®¤æ„é€ æ–¹æ³•ï¼ŒUserå¿…é¡»æ— å‚æ„é€ å‡½æ•°,å¦åˆ™å°†æŠ›å¼‚å¸¸
 		User user = (User) clazz.newInstance();
 		user.setAge(20);
 		user.setName("Rollen");
@@ -25,33 +25,33 @@ public class ReflectDemo implements Serializable {
 
 		System.out.println("--------------------------------------------");
 
-		// »ñÈ¡´øString²ÎÊıµÄpublic¹¹Ôìº¯Êı
+		// è·å–å¸¦Stringå‚æ•°çš„publicæ„é€ å‡½æ•°
 		Constructor cs1 = clazz.getConstructor(String.class);
-		// ´´½¨User
+		// åˆ›å»ºUser
 		User user1 = (User) cs1.newInstance("xiaolong");
 		user1.setAge(22);
 		System.out.println("user1:" + user1.toString());
 
 		System.out.println("--------------------------------------------");
 
-		// È¡µÃÖ¸¶¨´øintºÍString²ÎÊı¹¹Ôìº¯Êı,¸Ã·½·¨ÊÇË½ÓĞ¹¹Ôìprivate
+		// å–å¾—æŒ‡å®šå¸¦intå’ŒStringå‚æ•°æ„é€ å‡½æ•°,è¯¥æ–¹æ³•æ˜¯ç§æœ‰æ„é€ private
 		Constructor cs2 = clazz.getDeclaredConstructor(int.class, String.class);
-		// ÓÉÓÚÊÇprivate±ØĞëÉèÖÃ¿É·ÃÎÊ
+		// ç”±äºæ˜¯privateå¿…é¡»è®¾ç½®å¯è®¿é—®
 		cs2.setAccessible(true);
-		// ´´½¨user¶ÔÏó
+		// åˆ›å»ºuserå¯¹è±¡
 		User user2 = (User) cs2.newInstance(25, "lidakang");
 		System.out.println("user2:" + user2.toString());
 
 		System.out.println("--------------------------------------------");
 
-		// »ñÈ¡ËùÓĞ¹¹Ôì°üº¬private
+		// è·å–æ‰€æœ‰æ„é€ åŒ…å«private
 		Constructor<?> cons[] = clazz.getDeclaredConstructors();
-		// ²é¿´Ã¿¸ö¹¹Ôì·½·¨ĞèÒªµÄ²ÎÊı
+		// æŸ¥çœ‹æ¯ä¸ªæ„é€ æ–¹æ³•éœ€è¦çš„å‚æ•°
 		for (int i = 0; i < cons.length; i++) {
-			// »ñÈ¡¹¹Ôìº¯Êı²ÎÊıÀàĞÍ
+			// è·å–æ„é€ å‡½æ•°å‚æ•°ç±»å‹
 			Class<?> clazzs[] = cons[i].getParameterTypes();
-			System.out.println("¹¹Ôìº¯Êı[" + i + "]:" + cons[i].toString());
-			System.out.print("²ÎÊıÀàĞÍ[" + i + "]:(");
+			System.out.println("æ„é€ å‡½æ•°[" + i + "]:" + cons[i].toString());
+			System.out.print("å‚æ•°ç±»å‹[" + i + "]:(");
 			for (int j = 0; j < clazzs.length; j++) {
 				if (j == clazzs.length - 1)
 					System.out.print(clazzs[j].getName());
@@ -63,32 +63,32 @@ public class ReflectDemo implements Serializable {
 		
 		System.out.println("-----------------------------------------------------------------------------------");
 		
-		//¹¹ÔìÆ÷±¾Éí·½·¨°¸Àı
+		//æ„é€ å™¨æœ¬èº«æ–¹æ³•æ¡ˆä¾‹
 		Constructor cs3=clazz.getDeclaredConstructor(int.class,String.class);
 
 		System.out.println("-----getDeclaringClass-----");
 		Class uclazz=cs3.getDeclaringClass();
-		//Constructor¶ÔÏó±íÊ¾µÄ¹¹Ôì·½·¨µÄÀà
-		System.out.println("¹¹Ôì·½·¨µÄÀà:"+uclazz.getName());
+		//Constructorå¯¹è±¡è¡¨ç¤ºçš„æ„é€ æ–¹æ³•çš„ç±»
+		System.out.println("æ„é€ æ–¹æ³•çš„ç±»:"+uclazz.getName());
 
 		System.out.println("-----getGenericParameterTypes-----");
-		//¶ÔÏó±íÊ¾´Ë Constructor ¶ÔÏóËù±íÊ¾µÄ·½·¨µÄĞÎ²ÎÀàĞÍ
+		//å¯¹è±¡è¡¨ç¤ºæ­¤ Constructor å¯¹è±¡æ‰€è¡¨ç¤ºçš„æ–¹æ³•çš„å½¢å‚ç±»å‹
 		Type[] tps=cs3.getGenericParameterTypes();
 		for (Type tp:tps) {
-		    System.out.println("²ÎÊıÃû³Ætp:"+tp);
+		    System.out.println("å‚æ•°åç§°tp:"+tp);
 		}
 		System.out.println("-----getParameterTypes-----");
-		//»ñÈ¡¹¹Ôìº¯Êı²ÎÊıÀàĞÍ
+		//è·å–æ„é€ å‡½æ•°å‚æ•°ç±»å‹
 		Class<?> clazzs[] = cs3.getParameterTypes();
 		for (Class claz:clazzs) {
-		    System.out.println("²ÎÊıÃû³Æ:"+claz.getName());
+		    System.out.println("å‚æ•°åç§°:"+claz.getName());
 		}
 		System.out.println("-----getName-----");
-		//ÒÔ×Ö·û´®ĞÎÊ½·µ»Ø´Ë¹¹Ôì·½·¨µÄÃû³Æ
+		//ä»¥å­—ç¬¦ä¸²å½¢å¼è¿”å›æ­¤æ„é€ æ–¹æ³•çš„åç§°
 		System.out.println("getName:"+cs3.getName());
 
 		System.out.println("-----getoGenericString-----");
-		//·µ»ØÃèÊö´Ë Constructor µÄ×Ö·û´®£¬ÆäÖĞ°üÀ¨ÀàĞÍ²ÎÊı¡£
+		//è¿”å›æè¿°æ­¤ Constructor çš„å­—ç¬¦ä¸²ï¼Œå…¶ä¸­åŒ…æ‹¬ç±»å‹å‚æ•°ã€‚
 		System.out.println("getoGenericString():"+cs3.toGenericString());		
 		
 		
@@ -117,7 +117,7 @@ class User {
 	}
 
 	/**
-	 * Ë½ÓĞ¹¹Ôì
+	 * ç§æœ‰æ„é€ 
 	 * 
 	 * @param age
 	 * @param name

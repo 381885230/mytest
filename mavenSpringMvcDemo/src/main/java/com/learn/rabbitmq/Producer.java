@@ -8,29 +8,29 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.Channel;
 
 /**
- * ÏûÏ¢Éú³ÉÕß
+ * æ¶ˆæ¯ç”Ÿæˆè€…
  */
 public class Producer {
     public final static String QUEUE_NAME="rabbitMQ.test";
 
     public static void main(String[] args) throws IOException, TimeoutException {
-        //´´½¨Á¬½Ó¹¤³§
+        //åˆ›å»ºè¿æ¥å·¥å‚
         ConnectionFactory factory = new ConnectionFactory();
-        //ÉèÖÃRabbitMQÏà¹ØĞÅÏ¢
+        //è®¾ç½®RabbitMQç›¸å…³ä¿¡æ¯
         factory.setHost("localhost");
 //        factory.setUsername("lp");
 //        factory.setPassword("");
 //        factory.setPort(2088);
-        //´´½¨Ò»¸öĞÂµÄÁ¬½Ó
+        //åˆ›å»ºä¸€ä¸ªæ–°çš„è¿æ¥
         Connection connection = factory.newConnection();
-        //´´½¨Ò»¸öÍ¨µÀ
+        //åˆ›å»ºä¸€ä¸ªé€šé“
         Channel channel = connection.createChannel();
-        //  ÉùÃ÷Ò»¸ö¶ÓÁĞ        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+        //  å£°æ˜ä¸€ä¸ªé˜Ÿåˆ—        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
         String message = "Hello RabbitMQ";
-        //·¢ËÍÏûÏ¢µ½¶ÓÁĞÖĞ
+        //å‘é€æ¶ˆæ¯åˆ°é˜Ÿåˆ—ä¸­
         channel.basicPublish("", QUEUE_NAME, null, message.getBytes("UTF-8"));
         System.out.println("Producer Send +'" + message + "'");
-        //¹Ø±ÕÍ¨µÀºÍÁ¬½Ó
+        //å…³é—­é€šé“å’Œè¿æ¥
         channel.close();
         connection.close();
     }

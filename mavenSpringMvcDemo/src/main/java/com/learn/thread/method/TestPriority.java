@@ -2,7 +2,7 @@ package com.learn.thread.method;
 
 public class TestPriority {
 	public static void main(String[] args) {
-		// ×î¸ßÓÅÏÈ¼¶µÄÏß³Ì
+		// æœ€é«˜ä¼˜å…ˆçº§çš„çº¿ç¨‹
 		Thread max = new Thread() {
 			public void run() {
 				for (int i = 0; i < 10; i++) {
@@ -10,7 +10,7 @@ public class TestPriority {
 				}
 			}
 		};
-		// ×îµÍÓÅÏÈ¼¶µÄÏß³Ì
+		// æœ€ä½ä¼˜å…ˆçº§çš„çº¿ç¨‹
 		Thread min = new Thread() {
 			public void run() {
 				for (int i = 0; i < 10; i++) {
@@ -18,7 +18,7 @@ public class TestPriority {
 				}
 			}
 		};
-		// Ä¬ÈÏÓÅÏÈ¼¶µÄÏß³Ì
+		// é»˜è®¤ä¼˜å…ˆçº§çš„çº¿ç¨‹
 		Thread norm = new Thread() {
 			public void run() {
 				for (int i = 0; i < 10; i++) {
@@ -26,11 +26,11 @@ public class TestPriority {
 				}
 			}
 		};
-		// void setPriority(int p),ÉèÖÃµ±Ç°Ïß³ÌµÄÓÅÏÈ¼¶, ×î¸ß£¬×îµÍ£¬Ä¬ÈÏ¶¼ÓĞ³£Á¿¶ÔÓ¦¡£
-		// ÉèÖÃÁËÓÅÏÈ¼¶Ò²²»ÄÜ100%¿ØÖÆÏß³Ìµ÷¶È¡£Ö»ÊÇ×î´ó³Ì¶ÈµÄ¸æÖªÏß³Ìµ÷¶ÈÒÔ¸ü¶àµÄ¼¸ÂÊ·ÖÅäÊ±¼äÆ¬¸øÏß³ÌÓÅÏÈ¼¶¸ßµÄÏß³Ì
+		// void setPriority(int p),è®¾ç½®å½“å‰çº¿ç¨‹çš„ä¼˜å…ˆçº§, æœ€é«˜ï¼Œæœ€ä½ï¼Œé»˜è®¤éƒ½æœ‰å¸¸é‡å¯¹åº”ã€‚
+		// è®¾ç½®äº†ä¼˜å…ˆçº§ä¹Ÿä¸èƒ½100%æ§åˆ¶çº¿ç¨‹è°ƒåº¦ã€‚åªæ˜¯æœ€å¤§ç¨‹åº¦çš„å‘ŠçŸ¥çº¿ç¨‹è°ƒåº¦ä»¥æ›´å¤šçš„å‡ ç‡åˆ†é…æ—¶é—´ç‰‡ç»™çº¿ç¨‹ä¼˜å…ˆçº§é«˜çš„çº¿ç¨‹
 		max.setPriority(Thread.MAX_PRIORITY);
 		min.setPriority(Thread.MIN_PRIORITY);
-		// ÕâÏîÉèÖÃ¿ÉÒÔÊ¡ÂÔ£¬Ä¬ÈÏÇé¿öÏÂ¾ÍÊÇ¸ÃÖµ
+		// è¿™é¡¹è®¾ç½®å¯ä»¥çœç•¥ï¼Œé»˜è®¤æƒ…å†µä¸‹å°±æ˜¯è¯¥å€¼
 		norm.setPriority(Thread.NORM_PRIORITY);
 
 		min.start();

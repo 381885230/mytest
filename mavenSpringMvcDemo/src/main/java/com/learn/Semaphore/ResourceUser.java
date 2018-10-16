@@ -7,26 +7,26 @@ public class ResourceUser implements Runnable{
         this.userId = userId;  
     }  
     public void run(){  
-        System.out.print("userId:"+userId+"×¼±¸Ê¹ÓÃ×ÊÔ´...\n");  
+        System.out.print("userId:"+userId+"å‡†å¤‡ä½¿ç”¨èµ„æº...\n");  
         try {
 			resourceManage.useResource(userId);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}  
-        System.out.print("userId:"+userId+"Ê¹ÓÃ×ÊÔ´Íê±Ï...\n");  
+        System.out.print("userId:"+userId+"ä½¿ç”¨èµ„æºå®Œæ¯•...\n");  
     }  
   
     public static void main(String[] args){  
         ResourceManage resourceManage = new ResourceManage();  
         Thread[] threads = new Thread[100];  
         for (int i = 0; i < 100; i++) {  
-            Thread thread = new Thread(new ResourceUser(resourceManage,i));//´´½¨¶à¸ö×ÊÔ´Ê¹ÓÃÕß  
+            Thread thread = new Thread(new ResourceUser(resourceManage,i));//åˆ›å»ºå¤šä¸ªèµ„æºä½¿ç”¨è€…  
             threads[i] = thread;  
         }  
         for(int i = 0; i < 100; i++){  
             Thread thread = threads[i];  
             try {  
-                thread.start();//Æô¶¯Ïß³Ì  
+                thread.start();//å¯åŠ¨çº¿ç¨‹  
             }catch (Exception e){  
                 e.printStackTrace();  
             }  

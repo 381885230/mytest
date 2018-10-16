@@ -1,15 +1,15 @@
 package com.learn.proxy.cglib;
 
 /*
- * ²âÊÔÀà
+ * æµ‹è¯•ç±»
  */
 public class Test {
 	public static void main(String[] args) {
-		// Ä¿±ê¶ÔÏó
+		// ç›®æ ‡å¯¹è±¡
 		Singer target = new Singer();
-		// ´úÀí¶ÔÏó
+		// ä»£ç†å¯¹è±¡
 		Singer proxy = (Singer) new ProxyFactory(target).getProxyInstance();
-		// Ö´ĞĞ´úÀí¶ÔÏóµÄ·½·¨
+		// æ‰§è¡Œä»£ç†å¯¹è±¡çš„æ–¹æ³•
 		proxy.sing();
 	}
 }

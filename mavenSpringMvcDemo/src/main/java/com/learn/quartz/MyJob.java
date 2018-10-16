@@ -13,16 +13,16 @@ import org.quartz.impl.StdSchedulerFactory;
 
 public class MyJob implements Job {
 	public void execute(JobExecutionContext context) throws JobExecutionException {
-		System.out.println("ÒªÈ¥Êı¾İ¿âÉ¨ÃèÀ²¡£¡£¡£");
+		System.out.println("è¦å»æ•°æ®åº“æ‰«æå•¦ã€‚ã€‚ã€‚");
 	}
 
-	public static void main(String[] args) throws Exception { // ´´½¨ÈÎÎñ
+	public static void main(String[] args) throws Exception { // åˆ›å»ºä»»åŠ¡
 		JobDetail jobDetail = JobBuilder.newJob(MyJob.class)
-				.withIdentity("job1", "group1").build(); // ´´½¨´¥·¢Æ÷ Ã¿3ÃëÖÓÖ´ĞĞÒ»´Î
+				.withIdentity("job1", "group1").build(); // åˆ›å»ºè§¦å‘å™¨ æ¯3ç§’é’Ÿæ‰§è¡Œä¸€æ¬¡
 		Trigger trigger = TriggerBuilder.newTrigger().withIdentity("trigger1", "group3")
 				.withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(3).repeatForever()).build();
-		Scheduler scheduler = new StdSchedulerFactory().getScheduler(); // ½«ÈÎÎñ¼°Æä´¥·¢Æ÷·ÅÈëµ÷¶ÈÆ÷
-		scheduler.scheduleJob(jobDetail, trigger); // µ÷¶ÈÆ÷¿ªÊ¼µ÷¶ÈÈÎÎñ
+		Scheduler scheduler = new StdSchedulerFactory().getScheduler(); // å°†ä»»åŠ¡åŠå…¶è§¦å‘å™¨æ”¾å…¥è°ƒåº¦å™¨
+		scheduler.scheduleJob(jobDetail, trigger); // è°ƒåº¦å™¨å¼€å§‹è°ƒåº¦ä»»åŠ¡
 		scheduler.start();
 	}
 }

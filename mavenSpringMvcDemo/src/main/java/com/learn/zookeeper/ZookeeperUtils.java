@@ -15,7 +15,7 @@ import org.apache.zookeeper.ZooKeeper;
 public class ZookeeperUtils{
 	
 	private	Logger logger = Logger.getLogger(this.getClass());
-	//´´½¨Ò»¸öwatcher¶ÔÏó,µ±ÎÒÃÇ¶ÔZookeeper½øĞĞĞŞ¸ÄµÄÊ±ºò¶¼»á´¥·¢¸ÃÊÂ¼ş
+	//åˆ›å»ºä¸€ä¸ªwatcherå¯¹è±¡,å½“æˆ‘ä»¬å¯¹Zookeeperè¿›è¡Œä¿®æ”¹çš„æ—¶å€™éƒ½ä¼šè§¦å‘è¯¥äº‹ä»¶
 	private Watcher watcher = new Watcher() {
 		@Override
 		public void process(WatchedEvent event) {
@@ -23,40 +23,40 @@ public class ZookeeperUtils{
 		}
 	};
 	
-	//³õÊ¼»¯Zookeeper
+	//åˆå§‹åŒ–Zookeeper
 	private ZooKeeper zooKeeper ;
 	
 	public void zookeeperInit() throws IOException {
-		//¶à¸öipÊ¹ÓÃ£¬ºÅ·Ö¸î
+		//å¤šä¸ªipä½¿ç”¨ï¼Œå·åˆ†å‰²
 //		zooKeeper = new ZooKeeper("192.168.100.128:2180, 192.168.100.128:2182, 192.168.100.128:2183", 20000 , watcher);
 		zooKeeper = new ZooKeeper("localhost:2181", 20000 , watcher);
 	} 
 	
 	public void ZKOption() throws Exception, InterruptedException {
 		logger.debug("-----ZK Option-----");
-		//²ÎÊıÒ»£º´´½¨µÄÂ·¾¶/zoo1          ²ÎÊı¶ş£º½ÚµãÉÏµÄÊı¾İ       ²ÎÊıÈı£ºÈ¨ÏŞ    ²ÎÊıËÄ£º½ÚµãÀàĞÍ
+		//å‚æ•°ä¸€ï¼šåˆ›å»ºçš„è·¯å¾„/zoo1          å‚æ•°äºŒï¼šèŠ‚ç‚¹ä¸Šçš„æ•°æ®       å‚æ•°ä¸‰ï¼šæƒé™    å‚æ•°å››ï¼šèŠ‚ç‚¹ç±»å‹
 		zooKeeper.create("/zoo1", "zoo1".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
-		//Ìí¼Ówatcher £¬¶Ôzoo1½øĞĞ¼à¿Ø±ä»¯-->»ñÈ¡Êı¾İ ,Õâ¸ö¼à¿ØÖ»»á¶ÔÏÂ´Î²Ù×÷½ÚµãÆğµ½×÷ÓÃ
+		//æ·»åŠ watcher ï¼Œå¯¹zoo1è¿›è¡Œç›‘æ§å˜åŒ–-->è·å–æ•°æ® ,è¿™ä¸ªç›‘æ§åªä¼šå¯¹ä¸‹æ¬¡æ“ä½œèŠ‚ç‚¹èµ·åˆ°ä½œç”¨
 		zooKeeper.getData("/zoo1", this.watcher, null);
-		//ĞŞ¸Äzoo1½Úµã
+		//ä¿®æ”¹zoo1èŠ‚ç‚¹
 		zooKeeper.setData("/zoo1", "hello".getBytes(), -1);
-		//----------------------»ñÈ¡Êı¾İ----------------------------
-		logger.debug("»ñÈ¡µÚÒ»´Î½ÚµãĞÅÏ¢£º"+zooKeeper.getData("/zoo1", this.watcher, null));
-		System.out.println("»ñÈ¡µÚ¶ş´ÎÊı¾İĞÅÏ¢£º"+zooKeeper.getData("/zoo1", this.watcher, null));
-		//-----------------Õâ´Î²Ù×÷µÄ½Úµã²»»á½øĞĞ¼à¿Ø-----------------------
+		//----------------------è·å–æ•°æ®----------------------------
+		logger.debug("è·å–ç¬¬ä¸€æ¬¡èŠ‚ç‚¹ä¿¡æ¯ï¼š"+zooKeeper.getData("/zoo1", this.watcher, null));
+		System.out.println("è·å–ç¬¬äºŒæ¬¡æ•°æ®ä¿¡æ¯ï¼š"+zooKeeper.getData("/zoo1", this.watcher, null));
+		//-----------------è¿™æ¬¡æ“ä½œçš„èŠ‚ç‚¹ä¸ä¼šè¿›è¡Œç›‘æ§-----------------------
 		zooKeeper.setData("/zoo1", "world".getBytes(), -1);
-		//----------------------»ñÈ¡Êı¾İ----------------------------
-		logger.debug("»ñÈ¡µÚ¶ş´ÎÊı¾İĞÅÏ¢£º"+zooKeeper.getData("/zoo1", this.watcher, null));
-		System.out.println("»ñÈ¡µÚ¶ş´ÎÊı¾İĞÅÏ¢£º"+zooKeeper.getData("/zoo1", this.watcher, null));
-		//²é¿´½Úµã×´Ì¬
-		logger.debug("½Úµã×´Ì¬£º"+zooKeeper.getState());
-		System.out.println("½Úµã×´Ì¬£º"+zooKeeper.getState());
-		//É¾³ı½Úµã
+		//----------------------è·å–æ•°æ®----------------------------
+		logger.debug("è·å–ç¬¬äºŒæ¬¡æ•°æ®ä¿¡æ¯ï¼š"+zooKeeper.getData("/zoo1", this.watcher, null));
+		System.out.println("è·å–ç¬¬äºŒæ¬¡æ•°æ®ä¿¡æ¯ï¼š"+zooKeeper.getData("/zoo1", this.watcher, null));
+		//æŸ¥çœ‹èŠ‚ç‚¹çŠ¶æ€
+		logger.debug("èŠ‚ç‚¹çŠ¶æ€ï¼š"+zooKeeper.getState());
+		System.out.println("èŠ‚ç‚¹çŠ¶æ€ï¼š"+zooKeeper.getState());
+		//åˆ é™¤èŠ‚ç‚¹
 		zooKeeper.delete("/zoo1", -1);
 		System.out.println(zooKeeper.exists("/zoo1", false));
 	}
 	
-	//¹Ø±ÕZookeeper
+	//å…³é—­Zookeeper
 	public void closeZookeeper() throws Exception {
 		zooKeeper.close();
 	}

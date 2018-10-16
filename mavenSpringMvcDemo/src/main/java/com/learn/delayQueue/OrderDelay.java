@@ -19,13 +19,13 @@ public class OrderDelay implements Delayed {
 		long d = (getDelay(TimeUnit.NANOSECONDS) - t
 				.getDelay(TimeUnit.NANOSECONDS));
 		return (d == 0) ? 0 : ((d < 0) ? -1 : 1);
-	} // ·µ»Ø¾àÀëÄã×Ô¶¨ÒåµÄ³¬Ê±Ê±¼ä»¹ÓÐ¶àÉÙ
+	} // è¿”å›žè·ç¦»ä½ è‡ªå®šä¹‰çš„è¶…æ—¶æ—¶é—´è¿˜æœ‰å¤šå°‘
 
 	public long getDelay(TimeUnit unit) {
 		return unit.convert(timeout - System.nanoTime(), TimeUnit.NANOSECONDS);
 	}
 
 	void print() {
-		System.out.println(orderId + "±àºÅµÄ¶©µ¥ÒªÉ¾³ýÀ²¡£¡£¡£¡£");
+		System.out.println(orderId + "ç¼–å·çš„è®¢å•è¦åˆ é™¤å•¦ã€‚ã€‚ã€‚ã€‚");
 	}
 }

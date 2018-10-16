@@ -1,20 +1,20 @@
 package com.learn.thread.method;
 /**
- * Ïß³ÌµÄĞ­Í¬¹¤×÷ join·½·¨
+ * çº¿ç¨‹çš„ååŒå·¥ä½œ joinæ–¹æ³•
  */
 public class TestJoin {
 
-    // ÅĞ¶ÏÕÕÆ¬ÊÇ·ñÏÂÔØÍê³É
+    // åˆ¤æ–­ç…§ç‰‡æ˜¯å¦ä¸‹è½½å®Œæˆ
     public static boolean isFinish = false;
 
     public static void main(String[] args) {
-        // ÏÂÔØÍ¼Æ¬µÄÏß³Ì
+        // ä¸‹è½½å›¾ç‰‡çš„çº¿ç¨‹
         final Thread download = new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println("download:¿ªÊ¼ÏÂÔØÍ¼Æ¬");
+                System.out.println("download:å¼€å§‹ä¸‹è½½å›¾ç‰‡");
                 for(int i = 0; i <= 100; i++){
-                    System.out.println("download:ÒÑÍê³É" + i + "%");
+                    System.out.println("download:å·²å®Œæˆ" + i + "%");
                     try{
                         Thread.sleep(50);
                     }
@@ -22,29 +22,29 @@ public class TestJoin {
                         e.printStackTrace();
                     }
                 }
-                System.out.println("download:Í¼Æ¬ÏÂÔØÍê±Ï");
+                System.out.println("download:å›¾ç‰‡ä¸‹è½½å®Œæ¯•");
                 isFinish = true;
             }
         });
         download.start();
 
-        // ÓÃÓÚÏÔÊ¾Í¼Æ¬µÄÏß³Ì
+        // ç”¨äºæ˜¾ç¤ºå›¾ç‰‡çš„çº¿ç¨‹
         Thread showImg = new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println("show:×¼±¸ÏÔÊ¾Í¼Æ¬");
-                // µÈ´ıÏÂÔØÏß³Ì¹¤×÷½áÊøºó,ÔÙÖ´ĞĞÏÂÃæµÄ´úÂë,
+                System.out.println("show:å‡†å¤‡æ˜¾ç¤ºå›¾ç‰‡");
+                // ç­‰å¾…ä¸‹è½½çº¿ç¨‹å·¥ä½œç»“æŸå,å†æ‰§è¡Œä¸‹é¢çš„ä»£ç ,
                 try{
-                    // ´ËÊ±ÏÔÊ¾Í¼Æ¬µÄÏß³Ì¾Í½øÈë×èÈû×´Ì¬,µÈ´ıdownloadÏß³ÌÔËĞĞ½áÊø,²ÅÄÜÖ´ĞĞÏÂÃæµÄ´úÂë¡£×¢ÒâÇ§Íò²»ÒªÔÚÓÀÔ¶Ò²ËÀ²»ÁËµÄÏß³ÌÉÏµÈ´ı
+                    // æ­¤æ—¶æ˜¾ç¤ºå›¾ç‰‡çš„çº¿ç¨‹å°±è¿›å…¥é˜»å¡çŠ¶æ€,ç­‰å¾…downloadçº¿ç¨‹è¿è¡Œç»“æŸ,æ‰èƒ½æ‰§è¡Œä¸‹é¢çš„ä»£ç ã€‚æ³¨æ„åƒä¸‡ä¸è¦åœ¨æ°¸è¿œä¹Ÿæ­»ä¸äº†çš„çº¿ç¨‹ä¸Šç­‰å¾…
                     download.join();
                 }
                 catch(InterruptedException e){
                     e.printStackTrace();
                 }
                 if(!isFinish){
-                    throw new RuntimeException("show:Í¼Æ¬»¹Ã»ÓĞÏÂÔØÍê");
+                    throw new RuntimeException("show:å›¾ç‰‡è¿˜æ²¡æœ‰ä¸‹è½½å®Œ");
                 }
-                System.out.println("show:Í¼Æ¬ÏÔÊ¾Íê³É£¡");
+                System.out.println("show:å›¾ç‰‡æ˜¾ç¤ºå®Œæˆï¼");
             }
         });
         showImg.start();

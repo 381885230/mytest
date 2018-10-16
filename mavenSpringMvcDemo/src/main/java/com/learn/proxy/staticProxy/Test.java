@@ -1,15 +1,15 @@
 package com.learn.proxy.staticProxy;
 
 /*
- * ²âÊÔÀà
+ * æµ‹è¯•ç±»
  */
 public class Test {
 	public static void main(String[] args) {
-		// Ä¿±ê¶ÔÏó
+		// ç›®æ ‡å¯¹è±¡
 		ISinger target = new Singer();
-		// ´úÀí¶ÔÏó
+		// ä»£ç†å¯¹è±¡
 		ISinger proxy = new SingerProxy(target);
-		// Ö´ĞĞµÄÊÇ´úÀíµÄ·½·¨
+		// æ‰§è¡Œçš„æ˜¯ä»£ç†çš„æ–¹æ³•
 		proxy.sing();
 	}
 }

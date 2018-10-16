@@ -7,38 +7,38 @@ import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;
 
 /**
-* Cglib×ÓÀà´úÀí¹¤³§
-* ¶ÔUserDaoÔÚÄÚ´æÖĞ¶¯Ì¬¹¹½¨Ò»¸ö×ÓÀà¶ÔÏó
+* Cglibå­ç±»ä»£ç†å·¥å‚
+* å¯¹UserDaoåœ¨å†…å­˜ä¸­åŠ¨æ€æ„å»ºä¸€ä¸ªå­ç±»å¯¹è±¡
 */
 public class ProxyFactory implements MethodInterceptor{
-   //Î¬»¤Ä¿±ê¶ÔÏó
+   //ç»´æŠ¤ç›®æ ‡å¯¹è±¡
    private Object target;
 
    public ProxyFactory(Object target) {
        this.target = target;
    }
 
-   //¸øÄ¿±ê¶ÔÏó´´½¨Ò»¸ö´úÀí¶ÔÏó
+   //ç»™ç›®æ ‡å¯¹è±¡åˆ›å»ºä¸€ä¸ªä»£ç†å¯¹è±¡
    public Object getProxyInstance(){
-       //1.¹¤¾ßÀà
+       //1.å·¥å…·ç±»
        Enhancer en = new Enhancer();
-       //2.ÉèÖÃ¸¸Àà
+       //2.è®¾ç½®çˆ¶ç±»
        en.setSuperclass(target.getClass());
-       //3.ÉèÖÃ»Øµ÷º¯Êı
+       //3.è®¾ç½®å›è°ƒå‡½æ•°
        en.setCallback(this);
-       //4.´´½¨×ÓÀà(´úÀí¶ÔÏó)
+       //4.åˆ›å»ºå­ç±»(ä»£ç†å¯¹è±¡)
        return en.create();
 
    }
 
    @Override
    public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
-       System.out.println("¿ªÊ¼ÊÂÎñ...");
+       System.out.println("å¼€å§‹äº‹åŠ¡...");
 
-       //Ö´ĞĞÄ¿±ê¶ÔÏóµÄ·½·¨
+       //æ‰§è¡Œç›®æ ‡å¯¹è±¡çš„æ–¹æ³•
        Object returnValue = method.invoke(target, args);
 
-       System.out.println("Ìá½»ÊÂÎñ...");
+       System.out.println("æäº¤äº‹åŠ¡...");
 
        return returnValue;
    }

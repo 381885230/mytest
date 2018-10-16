@@ -13,7 +13,7 @@ public class Student {
 		this.sex = sex;
 	}
  
-	@MyAnnotation(name = "ÕÅÈý", age = 20, sex = true)
+	@MyAnnotation(name = "å¼ ä¸‰", age = 20, sex = true)
 	public void init() {
 		try {
 			Method method = Student.class.getMethod("init");
@@ -33,7 +33,7 @@ public class Student {
 	public void show() {
 		System.out.print("{name=" + this.name);
 		System.out.print(",age=" + this.age);
-		System.out.println(",sex=" + (this.sex ? "ÄÐ" : "Å®") + "}");
+		System.out.println(",sex=" + (this.sex ? "ç”·" : "å¥³") + "}");
 	}
  
 }

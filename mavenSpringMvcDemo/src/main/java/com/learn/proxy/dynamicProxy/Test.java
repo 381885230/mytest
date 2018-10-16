@@ -13,10 +13,10 @@ public class Test {
 					@Override
 					public Object invoke(Object proxy, Method method,
 							Object[] args) throws Throwable {
-						System.out.println("Ïò¹ÛÖÚÎÊºÃ");
-						// Ö´ĞĞÄ¿±ê¶ÔÏó·½·¨
+						System.out.println("å‘è§‚ä¼—é—®å¥½");
+						// æ‰§è¡Œç›®æ ‡å¯¹è±¡æ–¹æ³•
 						Object returnValue = method.invoke(target, args);
-						System.out.println("Ğ»Ğ»´ó¼Ò");
+						System.out.println("è°¢è°¢å¤§å®¶");
 						return returnValue;
 					}
 				});

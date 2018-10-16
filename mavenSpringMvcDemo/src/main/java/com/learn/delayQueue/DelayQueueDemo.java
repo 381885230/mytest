@@ -16,7 +16,7 @@ public class DelayQueueDemo {
 		DelayQueue<OrderDelay> queue = new DelayQueue<OrderDelay>();
 		long start = System.currentTimeMillis();
 		for (int i = 0; i < 5; i++) {
-			// ÑÓ³ÙÈýÃëÈ¡³ö
+			// å»¶è¿Ÿä¸‰ç§’å–å‡º
 			queue.put(new OrderDelay(list.get(i), TimeUnit.NANOSECONDS.convert(
 					3, TimeUnit.SECONDS)));
 			try {

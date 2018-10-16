@@ -3,7 +3,7 @@ package com.learn.thread.method;
 public class TestDaemon {
 	public static void main(String[] args) {
 
-		// Rose,±íÑİÕß:Ç°Ì¨Ïß³Ì
+		// Rose,è¡¨æ¼”è€…:å‰å°çº¿ç¨‹
 		Thread rose = new Thread() {
 			public void run() {
 				for (int i = 0; i < 10; i++) {
@@ -14,12 +14,12 @@ public class TestDaemon {
 						e.printStackTrace();
 					}
 				}
-				System.out.println("rose:°¡°¡°¡°¡AAAAAAaaaaaa....");
-				System.out.println("àÛÍ¨£¡");
+				System.out.println("rose:å•Šå•Šå•Šå•ŠAAAAAAaaaaaa....");
+				System.out.println("å™—é€šï¼");
 			}
 		};
 
-		// jack,±íÑİÕß:ºóÌ¨Ïß³Ì
+		// jack,è¡¨æ¼”è€…:åå°çº¿ç¨‹
 		Thread jack = new Thread() {
 			public void run() {
 				while (true) {
@@ -34,7 +34,7 @@ public class TestDaemon {
 		};
 
 		/*
-		 * ÉèÖÃÎªºóÌ¨Ïß³Ì ÉèÖÃºóÌ¨Ïß³ÌµÄ·½·¨ÒªÔÚ¸ÃÏß³Ì±»µ÷ÓÃstart()·½·¨Ö®Ç°µ÷ÓÃ
+		 * è®¾ç½®ä¸ºåå°çº¿ç¨‹ è®¾ç½®åå°çº¿ç¨‹çš„æ–¹æ³•è¦åœ¨è¯¥çº¿ç¨‹è¢«è°ƒç”¨start()æ–¹æ³•ä¹‹å‰è°ƒç”¨
 		 */
 		jack.setDaemon(true);
 		rose.start();

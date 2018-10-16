@@ -6,9 +6,9 @@ import java.lang.reflect.Proxy;
 
 public class DynaProxyHello implements InvocationHandler{
     
-    private Object target;//Ä¿±ê¶ÔÏó
+    private Object target;//ç›®æ ‡å¯¹è±¡
     /**
-     * Í¨¹ı·´ÉäÀ´ÊµÀı»¯Ä¿±ê¶ÔÏó
+     * é€šè¿‡åå°„æ¥å®ä¾‹åŒ–ç›®æ ‡å¯¹è±¡
      * @param object
      * @return
      */
@@ -20,8 +20,8 @@ public class DynaProxyHello implements InvocationHandler{
     public Object invoke(Object proxy, Method method, Object[] args)
             throws Throwable {
         Object result = null;
-        Logger.start();//Ìí¼Ó¶îÍâµÄ·½·¨
-        //Í¨¹ı·´Éä»úÖÆÀ´ÔËĞĞÄ¿±ê¶ÔÏóµÄ·½·¨
+        Logger.start();//æ·»åŠ é¢å¤–çš„æ–¹æ³•
+        //é€šè¿‡åå°„æœºåˆ¶æ¥è¿è¡Œç›®æ ‡å¯¹è±¡çš„æ–¹æ³•
         result = method.invoke(this.target, args);
         Logger.end();
         return result;

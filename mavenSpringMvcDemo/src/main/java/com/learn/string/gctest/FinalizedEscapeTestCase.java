@@ -2,9 +2,9 @@ package com.learn.string.gctest;
 
 /**
 
- * @Described£ºÌÓÒİ·ÖÎö²âÊÔÓÃÀı
+ * @Describedï¼šé€ƒé€¸åˆ†ææµ‹è¯•ç”¨ä¾‹
 
- * @author YHJ create at 2011-12-24 ÏÂÎç05:07:05
+ * @author YHJ create at 2011-12-24 ä¸‹åˆ05:07:05
 
  * @FileNmae com.yhj.jvm.gc.pojo.TestCaseForEscape.java
 
@@ -22,7 +22,7 @@ public class FinalizedEscapeTestCase {
 
        super.finalize();
 
-       System.out.println("¹ş¹ş£¬ÎÒÒÑÌÓÒİ£¡");
+       System.out.println("å“ˆå“ˆï¼Œæˆ‘å·²é€ƒé€¸ï¼");
 
        caseForEscape = this;
 

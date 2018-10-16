@@ -6,7 +6,7 @@ public class StudentTest {
 		Student stu = new Student();
 		stu.init();
 		stu.show();
-		stu.init("ÀîËÄ", 21, false);
+		stu.init("æå››", 21, false);
 		stu.show();
 	}
  

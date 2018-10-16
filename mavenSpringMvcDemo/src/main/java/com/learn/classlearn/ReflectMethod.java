@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 
 /**
  * Created by zejian on 2017/5/1. Blog : http://blog.csdn.net/javazejian
- * [Ô­ÎÄµØÖ·,Çë×ğÖØÔ­´´]
+ * [åŸæ–‡åœ°å€,è¯·å°Šé‡åŸåˆ›]
  */
 public class ReflectMethod {
 
@@ -14,12 +14,12 @@ public class ReflectMethod {
 
 		Class clazz = Class.forName("com.yuanjin.classlearn.Circle");
 
-		// ¸ù¾İ²ÎÊı»ñÈ¡publicµÄMethod,°üº¬¼Ì³Ğ×Ô¸¸ÀàµÄ·½·¨
+		// æ ¹æ®å‚æ•°è·å–publicçš„Method,åŒ…å«ç»§æ‰¿è‡ªçˆ¶ç±»çš„æ–¹æ³•
 		Method method = clazz.getMethod("draw", int.class, String.class);
 
 		System.out.println("method:" + method);
 
-		// »ñÈ¡ËùÓĞpublicµÄ·½·¨:
+		// è·å–æ‰€æœ‰publicçš„æ–¹æ³•:
 		Method[] methods = clazz.getMethods();
 		for (Method m : methods) {
 			System.out.println("m::" + m);
@@ -27,38 +27,38 @@ public class ReflectMethod {
 
 		System.out.println("=========================================");
 
-		// »ñÈ¡µ±Ç°ÀàµÄ·½·¨°üº¬private,¸Ã·½·¨ÎŞ·¨»ñÈ¡¼Ì³Ğ×Ô¸¸ÀàµÄmethod
+		// è·å–å½“å‰ç±»çš„æ–¹æ³•åŒ…å«private,è¯¥æ–¹æ³•æ— æ³•è·å–ç»§æ‰¿è‡ªçˆ¶ç±»çš„method
 		Method method1 = clazz.getDeclaredMethod("drawCircle");
 		System.out.println("method1::" + method1);
-		// »ñÈ¡µ±Ç°ÀàµÄËùÓĞ·½·¨°üº¬private,¸Ã·½·¨ÎŞ·¨»ñÈ¡¼Ì³Ğ×Ô¸¸ÀàµÄmethod
+		// è·å–å½“å‰ç±»çš„æ‰€æœ‰æ–¹æ³•åŒ…å«private,è¯¥æ–¹æ³•æ— æ³•è·å–ç»§æ‰¿è‡ªçˆ¶ç±»çš„method
 		Method[] methods1 = clazz.getDeclaredMethods();
 		for (Method m : methods1) {
 			System.out.println("m1::" + m);
 		}
 
 		Class clazz2 = Class.forName("com.yuanjin.classlearn.Circle");
-		// ´´½¨¶ÔÏó
+		// åˆ›å»ºå¯¹è±¡
 		Circle circle = (Circle) clazz2.newInstance();
 
-		// »ñÈ¡Ö¸¶¨²ÎÊıµÄ·½·¨¶ÔÏóMethod
+		// è·å–æŒ‡å®šå‚æ•°çš„æ–¹æ³•å¯¹è±¡Method
 		Method method22 = clazz2.getMethod("draw", int.class, String.class);
 
-		// Í¨¹ıMethod¶ÔÏóµÄinvoke(Object obj,Object... args)·½·¨µ÷ÓÃ
-		method22.invoke(circle, 15, "È¦È¦");
+		// é€šè¿‡Methodå¯¹è±¡çš„invoke(Object obj,Object... args)æ–¹æ³•è°ƒç”¨
+		method22.invoke(circle, 15, "åœˆåœˆ");
 
-		// ¶ÔË½ÓĞÎŞ²Î·½·¨µÄ²Ù×÷
+		// å¯¹ç§æœ‰æ— å‚æ–¹æ³•çš„æ“ä½œ
 		Method method11 = clazz2.getDeclaredMethod("drawCircle");
-		// ĞŞ¸ÄË½ÓĞ·½·¨µÄ·ÃÎÊ±êÊ¶
+		// ä¿®æ”¹ç§æœ‰æ–¹æ³•çš„è®¿é—®æ ‡è¯†
 		method11.setAccessible(true);
 		method11.invoke(circle);
 
-		// ¶ÔÓĞ·µ»ØÖµµÃ·½·¨²Ù×÷
+		// å¯¹æœ‰è¿”å›å€¼å¾—æ–¹æ³•æ“ä½œ
 		Method method2 = clazz2.getDeclaredMethod("getAllCount");
 		Integer count = (Integer) method2.invoke(circle);
 		System.out.println("count:" + count);
 
 		/**
-		 * Êä³ö½á¹û: draw È¦È¦,count=15 drawCircle count:100
+		 * è¾“å‡ºç»“æœ: draw åœˆåœˆ,count=15 drawCircle count:100
 		 *
 		 * 
 		 * 
@@ -66,7 +66,7 @@ public class ReflectMethod {
 		 * 
 		 * }
 		 * 
-		 * /** Êä³ö½á¹û: method:public void reflect.Shape.draw(int,java.lang.String)
+		 * /** è¾“å‡ºç»“æœ: method:public void reflect.Shape.draw(int,java.lang.String)
 		 * 
 		 * m::public int reflect.Circle.getAllCount() m::public void
 		 * reflect.Shape.draw() m::public void

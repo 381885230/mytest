@@ -3,37 +3,37 @@ package com.learn.thread.method;
 public class TestSleep {
 	public static void main(String[] args) {
 		/*
-		 * ±íÑİÕß£º´¦ÓÚË¯Ãß×èÈûµÄÏß³Ì¡£ µ±Ò»¸ö·½·¨ÖĞµÄ¾Ö²¿ÄÚ²¿ÀàÖĞĞèÒªÒıÓÃ¸Ã·½·¨µÄÆäËû¾Ö²¿±äÁ¿£¬ÄÇÃ´Õâ¸ö±äÁ¿±ØĞëÊÇfinalµÄ
+		 * è¡¨æ¼”è€…ï¼šå¤„äºç¡çœ é˜»å¡çš„çº¿ç¨‹ã€‚ å½“ä¸€ä¸ªæ–¹æ³•ä¸­çš„å±€éƒ¨å†…éƒ¨ç±»ä¸­éœ€è¦å¼•ç”¨è¯¥æ–¹æ³•çš„å…¶ä»–å±€éƒ¨å˜é‡ï¼Œé‚£ä¹ˆè¿™ä¸ªå˜é‡å¿…é¡»æ˜¯finalçš„
 		 */
 		final Thread lin = new Thread() {
 			public void run() {
-				System.out.println("ÁÖ:¸ÕÃÀÍêÈİ£¬Ë¯¾õ°É!");
+				System.out.println("æ—:åˆšç¾å®Œå®¹ï¼Œç¡è§‰å§!");
 				try {
-					// µ±Ò»¸öÏß³Ì´¦ÓÚË¯Ãß×èÈûÊ±£¬Èô±»ÆäËûÏß³Ìµ÷ÓÃinterrupt()·½·¨ÖĞ¶Ï£¬Ôòsleep()·½·¨»áÅ×³ö
-					// InterruptedExceptionÒì³£
+					// å½“ä¸€ä¸ªçº¿ç¨‹å¤„äºç¡çœ é˜»å¡æ—¶ï¼Œè‹¥è¢«å…¶ä»–çº¿ç¨‹è°ƒç”¨interrupt()æ–¹æ³•ä¸­æ–­ï¼Œåˆ™sleep()æ–¹æ³•ä¼šæŠ›å‡º
+					// InterruptedExceptionå¼‚å¸¸
 					Thread.sleep(100000000);
 				} catch (InterruptedException e) {
-					System.out.println("ÁÖ:¸ÉÂïÄØ£¡¶¼ÆÆÁËÏàÁË!");
+					System.out.println("æ—:å¹²å˜›å‘¢ï¼éƒ½ç ´äº†ç›¸äº†!");
 				}
 			}
 		};
 		/*
-		 * ±íÑİÕß:ÖĞ¶ÏË¯Ãß×èÈûµÄÏß³Ì
+		 * è¡¨æ¼”è€…:ä¸­æ–­ç¡çœ é˜»å¡çš„çº¿ç¨‹
 		 */
 		Thread huang = new Thread() {
 			public void run() {
-				System.out.println("»Æ:¿ªÊ¼ÔÒÇ½£¡");
+				System.out.println("é»„:å¼€å§‹ç ¸å¢™ï¼");
 				for (int i = 0; i < 5; i++) {
-					System.out.println("»Æ:80!");
+					System.out.println("é»„:80!");
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
 					}
 				}
-				System.out.println("ßÛµ±!");
-				System.out.println("»Æ:¸ã¶¨£¡");
+				System.out.println("å’£å½“!");
+				System.out.println("é»„:æå®šï¼");
 
-				// ÖĞ¶ÏlinµÄË¯Ãß×èÈû
+				// ä¸­æ–­linçš„ç¡çœ é˜»å¡
 				lin.interrupt();
 			}
 		};

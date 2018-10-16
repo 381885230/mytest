@@ -3,18 +3,18 @@ package com.learn.designpattern.staticproxy;
 import com.learn.designpattern.proxy.IUserDao;
 
 /**
-* ´úÀí¶ÔÏó,¾²Ì¬´úÀí
+* ä»£ç†å¯¹è±¡,é™æ€ä»£ç†
 */
 public class UserDaoProxy implements IUserDao{
-   //½ÓÊÕ±£´æÄ¿±ê¶ÔÏó
+   //æ¥æ”¶ä¿å­˜ç›®æ ‡å¯¹è±¡
    private IUserDao target;
    public UserDaoProxy(IUserDao target){
        this.target=target;
    }
 
    public void save() {
-       System.out.println("¿ªÊ¼ÊÂÎñ...");
-       target.save();//Ö´ĞĞÄ¿±ê¶ÔÏóµÄ·½·¨
-       System.out.println("Ìá½»ÊÂÎñ...");
+       System.out.println("å¼€å§‹äº‹åŠ¡...");
+       target.save();//æ‰§è¡Œç›®æ ‡å¯¹è±¡çš„æ–¹æ³•
+       System.out.println("æäº¤äº‹åŠ¡...");
    }
 }

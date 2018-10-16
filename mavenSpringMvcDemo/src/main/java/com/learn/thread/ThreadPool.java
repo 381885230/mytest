@@ -9,12 +9,12 @@ public class ThreadPool {
 	
 	public static void main(String[] args){
 		ThreadPool threadPool=new ThreadPool();
-		System.out.println("Åú´¦Àí¿ªÊ¼");
+		System.out.println("æ‰¹å¤„ç†å¼€å§‹");
 		for(int i=0;i<300;i++){
 			threadPool.pool.execute(new Task(String.valueOf(i)));
-			System.out.println("µÚ"+i+"¸öÈÎÎñÌá½»");
+			System.out.println("ç¬¬"+i+"ä¸ªä»»åŠ¡æäº¤");
 		}
-		System.out.println("Åú´¦Àí½áÊø");
+		System.out.println("æ‰¹å¤„ç†ç»“æŸ");
 		
 	}
 }

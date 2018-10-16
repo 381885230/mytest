@@ -6,7 +6,7 @@ public class ProxyHello implements IHello{
         this.hello = hello;
     }
     public void sayHello(String str) {
-        Logger.start();//Ìí¼ÓÌØ¶¨µÄ·½·¨
+        Logger.start();//æ·»åŠ ç‰¹å®šçš„æ–¹æ³•
         hello.sayHello(str);
         Logger.end();
     }

@@ -26,17 +26,17 @@ public class TestSet {
 		result.clear();
 		result.addAll(set1);
 		result.retainAll(set2);
-		System.out.println("½»¼¯£º" + result);
+		System.out.println("äº¤é›†ï¼š" + result);
 
 		result.clear();
 		result.addAll(set1);
 		result.removeAll(set2);
-		System.out.println("²î¼¯£º" + result);
+		System.out.println("å·®é›†ï¼š" + result);
 
 		result.clear();
 		result.addAll(set1);
 		result.addAll(set2);
-		System.out.println("²¢¼¯£º" + result);
+		System.out.println("å¹¶é›†ï¼š" + result);
 
 	}
 

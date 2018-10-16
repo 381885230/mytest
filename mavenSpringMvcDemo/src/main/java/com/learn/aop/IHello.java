@@ -1,7 +1,7 @@
 package com.learn.aop;
 public interface IHello {
     /**
-     * 业务方法
+     * 涓氬姟鏂规硶
      * @param str
      */
     void sayHello(String str);

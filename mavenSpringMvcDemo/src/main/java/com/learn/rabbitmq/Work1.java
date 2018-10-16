@@ -21,7 +21,7 @@ public class Work1 {
         channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, null);
         System.out.println("Worker1  Waiting for messages");
 
-        //每次从队列获取的数量
+        //姣忔浠庨槦鍒楄幏鍙栫殑鏁伴噺
         channel.basicQos(1);
 
         final Consumer consumer = new DefaultConsumer(channel) {
@@ -44,12 +44,12 @@ public class Work1 {
             }
         };
         boolean autoAck=false;
-        //消息消费完成确认
+        //娑堟伅娑堣垂瀹屾垚纭
         channel.basicConsume(TASK_QUEUE_NAME, autoAck, consumer);
     }
     private static void doWork(String task) {
         try {
-            Thread.sleep(1000); // 暂停1秒钟
+            Thread.sleep(1000); // 鏆傚仠1绉掗挓
         } catch (InterruptedException _ignored) {
             Thread.currentThread().interrupt();
         }

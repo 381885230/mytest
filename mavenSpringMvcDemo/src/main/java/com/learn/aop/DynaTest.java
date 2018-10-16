@@ -1,8 +1,8 @@
 package com.learn.aop;
 public class DynaTest {
     public static void main(String[] args) {
-        IHello hello = (IHello) new DynaProxyHello().bind(new Hello());//Èç¹ûÎÒÃÇĞèÒªÈÕÖ¾¹¦ÄÜ£¬ÔòÊ¹ÓÃ´úÀíÀà
-        //IHello hello = new Hello();//Èç¹ûÎÒÃÇ²»ĞèÒªÈÕÖ¾¹¦ÄÜÔòÊ¹ÓÃÄ¿±êÀà
-        hello.sayHello("Ã÷Ìì");
+        IHello hello = (IHello) new DynaProxyHello().bind(new Hello());//å¦‚æœæˆ‘ä»¬éœ€è¦æ—¥å¿—åŠŸèƒ½ï¼Œåˆ™ä½¿ç”¨ä»£ç†ç±»
+        //IHello hello = new Hello();//å¦‚æœæˆ‘ä»¬ä¸éœ€è¦æ—¥å¿—åŠŸèƒ½åˆ™ä½¿ç”¨ç›®æ ‡ç±»
+        hello.sayHello("æ˜å¤©");
     }
 }

@@ -14,65 +14,65 @@ package com.learn.es;
 //    public ElasticsearchUtils(String clusterName, String ipAddress) {
 //        Settings settings = ImmutableSettings
 //                .settingsBuilder()
-//                //ÉèÖÃ¼¯ÈºÃû³Æ 
+//                //è®¾ç½®é›†ç¾¤åç§° 
 //                .put("cluster.name", clusterName)
 //                .put("client.transport.ignore_cluster_name", false)
 //                .put("node.client", true).put("client.transport.sniff", true)
 //                .build();
 //        client = new TransportClient(settings)
 //                .addTransportAddress(new InetSocketTransportAddress(ipAddress,
-//                        9300));//´Ë´¦¶Ë¿ÚºÅÎª9300
+//                        9300));//æ­¤å¤„ç«¯å£å·ä¸º9300
 //    }
 //    
 //    /**
-//     * ´´½¨Ë÷Òı
-//     * @param indexName Ë÷ÒıÃû³Æ£¬Ïàµ±ÓÚÊı¾İ¿âÃû³Æ
-//     * @param typeName Ë÷ÒıÀàĞÍ£¬Ïàµ±ÓÚÊı¾İ¿âÖĞµÄ±íÃû
-//     * @param id idÃû³Æ£¬Ïàµ±ÓÚÃ¿¸ö±íÖĞÄ³Ò»ĞĞ¼ÇÂ¼µÄ±êÊ¶
-//     * @param jsonData jsonÊı¾İ
+//     * åˆ›å»ºç´¢å¼•
+//     * @param indexName ç´¢å¼•åç§°ï¼Œç›¸å½“äºæ•°æ®åº“åç§°
+//     * @param typeName ç´¢å¼•ç±»å‹ï¼Œç›¸å½“äºæ•°æ®åº“ä¸­çš„è¡¨å
+//     * @param id idåç§°ï¼Œç›¸å½“äºæ¯ä¸ªè¡¨ä¸­æŸä¸€è¡Œè®°å½•çš„æ ‡è¯†
+//     * @param jsonData jsonæ•°æ®
 //     */
 //    public void createIndex(String indexName, String typeName, String id,
 //            String jsonData) {
 //        IndexRequestBuilder requestBuilder = client.prepareIndex(indexName,
-//            typeName, id).setRefresh(true);//ÉèÖÃË÷ÒıÃû³Æ£¬Ë÷ÒıÀàĞÍ£¬id
-//        requestBuilder.setSource(jsonData).execute().actionGet();//´´½¨Ë÷Òı
+//            typeName, id).setRefresh(true);//è®¾ç½®ç´¢å¼•åç§°ï¼Œç´¢å¼•ç±»å‹ï¼Œid
+//        requestBuilder.setSource(jsonData).execute().actionGet();//åˆ›å»ºç´¢å¼•
 //    }
 //
 //    /**
-//     * Ö´ĞĞËÑË÷
-//     * @param indexname Ë÷ÒıÃû³Æ
-//     * @param type Ë÷ÒıÀàĞÍ
-//     * @param queryBuilder ²éÑ¯Ìõ¼ş
+//     * æ‰§è¡Œæœç´¢
+//     * @param indexname ç´¢å¼•åç§°
+//     * @param type ç´¢å¼•ç±»å‹
+//     * @param queryBuilder æŸ¥è¯¢æ¡ä»¶
 //     * @return
 //     */
 //    public SearchResponse searcher(String indexName, String typeName,
 //            QueryBuilder queryBuilder) {
 //        SearchResponse searchResponse = client.prepareSearch(indexName)
 //                .setTypes(typeName).setQuery(queryBuilder).execute()
-//                .actionGet();//Ö´ĞĞ²éÑ¯
+//                .actionGet();//æ‰§è¡ŒæŸ¥è¯¢
 //        return searchResponse;
 //    }
 //
 //    
 //    /**
-//     * ¸üĞÂË÷Òı
-//     * @param indexName Ë÷ÒıÃû³Æ
-//     * @param typeName Ë÷ÒıÀàĞÍ
-//     * @param id idÃû³Æ
-//     * @param jsonData jsonÊı¾İ
+//     * æ›´æ–°ç´¢å¼•
+//     * @param indexName ç´¢å¼•åç§°
+//     * @param typeName ç´¢å¼•ç±»å‹
+//     * @param id idåç§°
+//     * @param jsonData jsonæ•°æ®
 //     */
 //    public void updateIndex(String indexName, String typeName, String id,
 //            String jsonData) {
 //        UpdateRequest updateRequest = new UpdateRequest();
-//        updateRequest.index(indexName);//ÉèÖÃË÷ÒıÃû³Æ
-//        updateRequest.id(id);//ÉèÖÃid
-//        updateRequest.type(typeName);//ÉèÖÃË÷ÒıÀàĞÍ
-//        updateRequest.doc(jsonData);//¸üĞÂÊı¾İ
-//        client.update(updateRequest).actionGet();//Ö´ĞĞ¸üĞÂ
+//        updateRequest.index(indexName);//è®¾ç½®ç´¢å¼•åç§°
+//        updateRequest.id(id);//è®¾ç½®id
+//        updateRequest.type(typeName);//è®¾ç½®ç´¢å¼•ç±»å‹
+//        updateRequest.doc(jsonData);//æ›´æ–°æ•°æ®
+//        client.update(updateRequest).actionGet();//æ‰§è¡Œæ›´æ–°
 //    }
 //
 //    /**
-//     * É¾³ıË÷Òı
+//     * åˆ é™¤ç´¢å¼•
 //     * @param indexName
 //     * @param typeName
 //     * @param id

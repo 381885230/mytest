@@ -1,10 +1,10 @@
 package com.learn.designpattern.proxy;
 /**
-* 接口实现
-* 目标对象
+* 鎺ュ彛瀹炵幇
+* 鐩爣瀵硅薄
 */
 public class UserDao implements IUserDao {
    public void save() {
-       System.out.println("----已经保存数据!----");
+       System.out.println("----宸茬粡淇濆瓨鏁版嵁!----");
    }
 }

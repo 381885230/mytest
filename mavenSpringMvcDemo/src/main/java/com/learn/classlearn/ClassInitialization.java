@@ -3,9 +3,9 @@ package com.learn.classlearn;
 import java.util.*;
 
 class Initable {
-	// ±àÒëÆÚ¾²Ì¬³£Á¿
+	// ç¼–è¯‘æœŸé™æ€å¸¸é‡
 	static final int staticFinal = 47;
-	// ·Ç±àÆÚ¾²Ì¬³£Á¿
+	// éç¼–æœŸé™æ€å¸¸é‡
 	static final int staticFinal2 = ClassInitialization.rand.nextInt(1000);
 	static {
 		System.out.println("Initializing Initable");
@@ -13,7 +13,7 @@ class Initable {
 }
 
 class Initable2 {
-	// ¾²Ì¬³ÉÔ±±äÁ¿
+	// é™æ€æˆå‘˜å˜é‡
 	static int staticNonFinal = 147;
 	static {
 		System.out.println("Initializing Initable2");
@@ -21,7 +21,7 @@ class Initable2 {
 }
 
 class Initable3 {
-	// ¾²Ì¬³ÉÔ±±äÁ¿
+	// é™æ€æˆå‘˜å˜é‡
 	static int staticNonFinal = 74;
 	static {
 		System.out.println("Initializing Initable3");
@@ -32,16 +32,16 @@ public class ClassInitialization {
 	public static Random rand = new Random(47);
 
 	public static void main(String[] args) throws Exception {
-		// ×ÖÃæ³£Á¿»ñÈ¡·½Ê½»ñÈ¡Class¶ÔÏó
+		// å­—é¢å¸¸é‡è·å–æ–¹å¼è·å–Classå¯¹è±¡
 		Class initable = Initable.class;
 		System.out.println("After creating Initable ref");
-		// ²»´¥·¢Àà³õÊ¼»¯
+		// ä¸è§¦å‘ç±»åˆå§‹åŒ–
 		System.out.println(Initable.staticFinal);
-		// »á´¥·¢Àà³õÊ¼»¯
+		// ä¼šè§¦å‘ç±»åˆå§‹åŒ–
 		System.out.println(Initable.staticFinal2);
-		// »á´¥·¢Àà³õÊ¼»¯
+		// ä¼šè§¦å‘ç±»åˆå§‹åŒ–
 		System.out.println(Initable2.staticNonFinal);
-		// forName·½·¨»ñÈ¡Class¶ÔÏó
+		// forNameæ–¹æ³•è·å–Classå¯¹è±¡
 		Class initable3 = Class.forName("Initable3");
 		System.out.println("After creating Initable3 ref");
 		System.out.println(Initable3.staticNonFinal);

@@ -8,32 +8,32 @@ public class ResourceManage {
     private boolean resourceArray[];  
     private final ReentrantLock lock;  
     public ResourceManage() {  
-        this.resourceArray = new boolean[10];//´æ·Å²ŞËù×´Ì¬  
-        this.semaphore = new Semaphore(10,true);//¿ØÖÆ10¸ö¹²Ïí×ÊÔ´µÄÊ¹ÓÃ£¬Ê¹ÓÃÏÈ½øÏÈ³öµÄ¹«Æ½Ä£Ê½½øĞĞ¹²Ïí;¹«Æ½Ä£Ê½µÄĞÅºÅÁ¿£¬ÏÈÀ´µÄÏÈ»ñµÃĞÅºÅÁ¿  
-        this.lock = new ReentrantLock(true);//¹«Æ½Ä£Ê½µÄËø£¬ÏÈÀ´µÄÏÈÑ¡  
+        this.resourceArray = new boolean[10];//å­˜æ”¾å•æ‰€çŠ¶æ€  
+        this.semaphore = new Semaphore(10,true);//æ§åˆ¶10ä¸ªå…±äº«èµ„æºçš„ä½¿ç”¨ï¼Œä½¿ç”¨å…ˆè¿›å…ˆå‡ºçš„å…¬å¹³æ¨¡å¼è¿›è¡Œå…±äº«;å…¬å¹³æ¨¡å¼çš„ä¿¡å·é‡ï¼Œå…ˆæ¥çš„å…ˆè·å¾—ä¿¡å·é‡  
+        this.lock = new ReentrantLock(true);//å…¬å¹³æ¨¡å¼çš„é”ï¼Œå…ˆæ¥çš„å…ˆé€‰  
         for(int i=0 ;i<10; i++){  
-            resourceArray[i] = true;//³õÊ¼»¯Îª×ÊÔ´¿ÉÓÃµÄÇé¿ö  
+            resourceArray[i] = true;//åˆå§‹åŒ–ä¸ºèµ„æºå¯ç”¨çš„æƒ…å†µ  
         }  
     }  
     public void useResource(int userId) throws InterruptedException{ 
 		semaphore.acquire(); 
         try{  
             //semaphore.acquire();  
-            int id = getResourceId();//Õ¼µ½Ò»¸ö¿Ó  
-            System.out.print("userId:"+userId+"ÕıÔÚÊ¹ÓÃ×ÊÔ´£¬×ÊÔ´id:"+id+"\n");  
-            Thread.sleep(100);//do something£¬Ïàµ±ÓÚÓÚÊ¹ÓÃ×ÊÔ´  
-            resourceArray[id] = true;//ÍË³öÕâ¸ö¿Ó  
+            int id = getResourceId();//å åˆ°ä¸€ä¸ªå‘  
+            System.out.print("userId:"+userId+"æ­£åœ¨ä½¿ç”¨èµ„æºï¼Œèµ„æºid:"+id+"\n");  
+            Thread.sleep(100);//do somethingï¼Œç›¸å½“äºäºä½¿ç”¨èµ„æº  
+            resourceArray[id] = true;//é€€å‡ºè¿™ä¸ªå‘  
         }catch (InterruptedException e){  
             e.printStackTrace();  
         }finally {  
-            semaphore.release();//ÊÍ·ÅĞÅºÅÁ¿£¬¼ÆÊıÆ÷¼Ó1  
+            semaphore.release();//é‡Šæ”¾ä¿¡å·é‡ï¼Œè®¡æ•°å™¨åŠ 1  
         }  
     }  
     private int getResourceId(){  
         int id = -1; 
 		lock.lock();
         try {  
-            //lock.lock();//ËäÈ»Ê¹ÓÃÁËËø¿ØÖÆÍ¬²½£¬µ«ÓÉÓÚÖ»ÊÇ¼òµ¥µÄÒ»¸öÊı×é±éÀú£¬Ğ§ÂÊ»¹ÊÇºÜ¸ßµÄ£¬ËùÒÔ»ù±¾²»Ó°ÏìĞÔÄÜ¡£  
+            //lock.lock();//è™½ç„¶ä½¿ç”¨äº†é”æ§åˆ¶åŒæ­¥ï¼Œä½†ç”±äºåªæ˜¯ç®€å•çš„ä¸€ä¸ªæ•°ç»„éå†ï¼Œæ•ˆç‡è¿˜æ˜¯å¾ˆé«˜çš„ï¼Œæ‰€ä»¥åŸºæœ¬ä¸å½±å“æ€§èƒ½ã€‚  
             for(int i=0; i<10; i++){  
                 if(resourceArray[i]){  
                     resourceArray[i] = false;  

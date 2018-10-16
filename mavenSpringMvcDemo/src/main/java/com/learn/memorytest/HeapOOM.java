@@ -5,10 +5,10 @@ import java.util.List;
 
 /** 
  * Vm args:-Xms20M -Xmx20M -XX:+HeapDumpOnOutOfMemoryError 
- * ¶ÑµÄ×îĞ¡Öµ²ÎÊı-Xms£¬¶ÑµÄ×î´óÖµ²ÎÊı-Xmx 
- * -XX:+HeapDumpOnOutOfMemoryError±íÊ¾ÈÃĞéÄâ»úÔÚ³öÏÖÄÚ´æÒì³£Ê±Dump³öµ±Ç°µÄÄÚ´æ¶Ñ×ª´¢¿ìÕÕ 
- * -XX:HeapDumpPath:Îª¿ìÕÕÎÄ¼şÎ»ÖÃ 
- * Java ¶ÑÄÚ´æÒç³ö²âÊÔ£¬ÉîÈëÀí½âjavaĞéÄâ»ú p51 
+ * å †çš„æœ€å°å€¼å‚æ•°-Xmsï¼Œå †çš„æœ€å¤§å€¼å‚æ•°-Xmx 
+ * -XX:+HeapDumpOnOutOfMemoryErrorè¡¨ç¤ºè®©è™šæ‹Ÿæœºåœ¨å‡ºç°å†…å­˜å¼‚å¸¸æ—¶Dumpå‡ºå½“å‰çš„å†…å­˜å †è½¬å‚¨å¿«ç…§ 
+ * -XX:HeapDumpPath:ä¸ºå¿«ç…§æ–‡ä»¶ä½ç½® 
+ * Java å †å†…å­˜æº¢å‡ºæµ‹è¯•ï¼Œæ·±å…¥ç†è§£javaè™šæ‹Ÿæœº p51 
  */  
 //-Xms20m -Xmx20m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=C:/  
 public class HeapOOM {  

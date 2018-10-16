@@ -29,19 +29,19 @@ public class ElasticSearchTest {
     @SuppressWarnings({ "unchecked" })
     public void before() throws UnknownHostException, InterruptedException, ExecutionException {
         Settings esSettings = Settings.builder()
-                .put("cluster.name", "touda-uat") //ÉèÖÃESÊµÀıµÄÃû³Æ
-                .put("client.transport.sniff", true) //×Ô¶¯ĞáÌ½Õû¸ö¼¯ÈºµÄ×´Ì¬£¬°Ñ¼¯ÈºÖĞÆäËûES½ÚµãµÄipÌí¼Óµ½±¾µØµÄ¿Í»§¶ËÁĞ±íÖĞ
+                .put("cluster.name", "touda-uat") //è®¾ç½®ESå®ä¾‹çš„åç§°
+                .put("client.transport.sniff", true) //è‡ªåŠ¨å—…æ¢æ•´ä¸ªé›†ç¾¤çš„çŠ¶æ€ï¼ŒæŠŠé›†ç¾¤ä¸­å…¶ä»–ESèŠ‚ç‚¹çš„ipæ·»åŠ åˆ°æœ¬åœ°çš„å®¢æˆ·ç«¯åˆ—è¡¨ä¸­
                 .build();
-        client = new PreBuiltTransportClient(esSettings);//³õÊ¼»¯client½ÏÀÏ°æ±¾·¢ÉúÁË±ä»¯£¬´Ë·½·¨ÓĞ¼¸¸öÖØÔØ·½·¨£¬³õÊ¼»¯²å¼şµÈ¡£
-        //´Ë²½ÖèÌí¼ÓIP£¬ÖÁÉÙÒ»¸ö£¬ÆäÊµÒ»¸ö¾Í¹»ÁË£¬ÒòÎªÌí¼ÓÁË×Ô¶¯ĞáÌ½ÅäÖÃ
+        client = new PreBuiltTransportClient(esSettings);//åˆå§‹åŒ–clientè¾ƒè€ç‰ˆæœ¬å‘ç”Ÿäº†å˜åŒ–ï¼Œæ­¤æ–¹æ³•æœ‰å‡ ä¸ªé‡è½½æ–¹æ³•ï¼Œåˆå§‹åŒ–æ’ä»¶ç­‰ã€‚
+        //æ­¤æ­¥éª¤æ·»åŠ IPï¼Œè‡³å°‘ä¸€ä¸ªï¼Œå…¶å®ä¸€ä¸ªå°±å¤Ÿäº†ï¼Œå› ä¸ºæ·»åŠ äº†è‡ªåŠ¨å—…æ¢é…ç½®
         client.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9200));
     }
     
     @Test
     public void index() throws Exception {
         Map<String,Object> infoMap = new HashMap<String, Object>();
-        infoMap.put("name", "¹ã¸æĞÅÏ¢11");
-        infoMap.put("title", "ÎÒµÄ¹ã¸æ22");
+        infoMap.put("name", "å¹¿å‘Šä¿¡æ¯11");
+        infoMap.put("title", "æˆ‘çš„å¹¿å‘Š22");
         infoMap.put("createTime", new Date());
         infoMap.put("count", 1022);
         IndexResponse indexResponse = client.prepareIndex("test", "info","100").setSource(infoMap).execute().actionGet();
@@ -58,9 +58,9 @@ public class ElasticSearchTest {
     
     @Test
     public void query() throws Exception {
-        //term²éÑ¯
+        //termæŸ¥è¯¢
 //        QueryBuilder queryBuilder = QueryBuilders.termQuery("age", 50) ;
-        //range²éÑ¯
+        //rangeæŸ¥è¯¢
         QueryBuilder rangeQueryBuilder = QueryBuilders.rangeQuery("age").gt(50);
         SearchResponse searchResponse = client.prepareSearch("sxq")
                 .setTypes("user")
@@ -70,7 +70,7 @@ public class ElasticSearchTest {
                 .execute()
                 .actionGet();
         SearchHits hits = searchResponse.getHits(); 
-        System.out.println("²éµ½¼ÇÂ¼Êı£º"+hits.getTotalHits());
+        System.out.println("æŸ¥åˆ°è®°å½•æ•°ï¼š"+hits.getTotalHits());
         SearchHit[] searchHists = hits.getHits();
         if(searchHists.length>0){
             for(SearchHit hit:searchHists){

@@ -4,19 +4,19 @@ import java.lang.reflect.Field;
 
 /**
  * Created by zejian on 2017/5/1. Blog : http://blog.csdn.net/javazejian
- * [Ô­ÎÄµØÖ·,Çë×ğÖØÔ­´´]
+ * [åŸæ–‡åœ°å€,è¯·å°Šé‡åŸåˆ›]
  */
 public class ReflectField {
 
 	public static void main(String[] args) throws ClassNotFoundException,
 			NoSuchFieldException, IllegalArgumentException, IllegalAccessException, InstantiationException {
 		Class<?> clazz = Class.forName("com.yuanjin.classlearn.Student");
-		// »ñÈ¡Ö¸¶¨×Ö¶ÎÃû³ÆµÄFieldÀà,×¢Òâ×Ö¶ÎĞŞÊÎ·û±ØĞëÎªpublic¶øÇÒ´æÔÚ¸Ã×Ö¶Î,
-		// ·ñÔòÅ×NoSuchFieldException
+		// è·å–æŒ‡å®šå­—æ®µåç§°çš„Fieldç±»,æ³¨æ„å­—æ®µä¿®é¥°ç¬¦å¿…é¡»ä¸ºpublicè€Œä¸”å­˜åœ¨è¯¥å­—æ®µ,
+		// å¦åˆ™æŠ›NoSuchFieldException
 		Field field = clazz.getField("age");
 		System.out.println("field:" + field);
 
-		// »ñÈ¡ËùÓĞĞŞÊÎ·ûÎªpublicµÄ×Ö¶Î,°üº¬¸¸Àà×Ö¶Î,×¢ÒâĞŞÊÎ·ûÎªpublic²Å»á»ñÈ¡
+		// è·å–æ‰€æœ‰ä¿®é¥°ç¬¦ä¸ºpublicçš„å­—æ®µ,åŒ…å«çˆ¶ç±»å­—æ®µ,æ³¨æ„ä¿®é¥°ç¬¦ä¸ºpublicæ‰ä¼šè·å–
 		Field fields[] = clazz.getFields();
 		for (Field f : fields) {
 			System.out.println("f:" + f.getDeclaringClass());
@@ -24,40 +24,40 @@ public class ReflectField {
 
 		System.out
 				.println("================getDeclaredFields====================");
-		// »ñÈ¡µ±Ç°ÀàËù×Ö¶Î(°üº¬private×Ö¶Î),×¢Òâ²»°üº¬¸¸ÀàµÄ×Ö¶Î
+		// è·å–å½“å‰ç±»æ‰€å­—æ®µ(åŒ…å«privateå­—æ®µ),æ³¨æ„ä¸åŒ…å«çˆ¶ç±»çš„å­—æ®µ
 		Field fields2[] = clazz.getDeclaredFields();
 		for (Field f : fields2) {
 			System.out.println("f2:" + f.getDeclaringClass());
 		}
-		// »ñÈ¡Ö¸¶¨×Ö¶ÎÃû³ÆµÄFieldÀà,¿ÉÒÔÊÇÈÎÒâĞŞÊÎ·ûµÄ×Ô¶¯,×¢Òâ²»°üº¬¸¸ÀàµÄ×Ö¶Î
+		// è·å–æŒ‡å®šå­—æ®µåç§°çš„Fieldç±»,å¯ä»¥æ˜¯ä»»æ„ä¿®é¥°ç¬¦çš„è‡ªåŠ¨,æ³¨æ„ä¸åŒ…å«çˆ¶ç±»çš„å­—æ®µ
 		Field field2 = clazz.getDeclaredField("desc");
 		System.out.println("field2:" + field2);
 		
 		System.out.println("---------------------------------------------------------------------");
 		
 		
-		//»ñÈ¡Class¶ÔÏóÒıÓÃ
+		//è·å–Classå¯¹è±¡å¼•ç”¨
 		Class<?> clazz2 = Class.forName("com.yuanjin.classlearn.Student");
 
 		Student st= (Student) clazz2.newInstance();
-		//»ñÈ¡¸¸Ààpublic×Ö¶Î²¢¸³Öµ
+		//è·å–çˆ¶ç±»publicå­—æ®µå¹¶èµ‹å€¼
 		Field ageField = clazz2.getField("age");
 		ageField.set(st,18);
 		Field nameField = clazz2.getField("name");
 		nameField.set(st,"Lily");
 
-		//Ö»»ñÈ¡µ±Ç°ÀàµÄ×Ö¶Î,²»»ñÈ¡¸¸ÀàµÄ×Ö¶Î
+		//åªè·å–å½“å‰ç±»çš„å­—æ®µ,ä¸è·å–çˆ¶ç±»çš„å­—æ®µ
 		Field descField = clazz2.getDeclaredField("desc");
 		descField.set(st,"I am student");
 		Field scoreField = clazz2.getDeclaredField("score");
-		//ÉèÖÃ¿É·ÃÎÊ£¬scoreÊÇprivateµÄ
+		//è®¾ç½®å¯è®¿é—®ï¼Œscoreæ˜¯privateçš„
 		scoreField.setAccessible(true);
 		scoreField.set(st,88);
 		System.out.println(st.toString());
 
-		//Êä³ö½á¹û£ºStudent{age=18, name='Lily ,desc='I am student', score=88} 
+		//è¾“å‡ºç»“æœï¼šStudent{age=18, name='Lily ,desc='I am student', score=88} 
 
-		//»ñÈ¡×Ö¶ÎÖµ
+		//è·å–å­—æ®µå€¼
 		System.out.println(scoreField.get(st));
 		// 88		
 		
@@ -67,7 +67,7 @@ public class ReflectField {
 		
 	}
 	/**
-	 * Êä³ö½á¹û: field:public int reflect.Person.age f:public java.lang.String
+	 * è¾“å‡ºç»“æœ: field:public int reflect.Person.age f:public java.lang.String
 	 * reflect.Student.desc f:public int reflect.Person.age f:public
 	 * java.lang.String reflect.Person.name
 	 * 
@@ -80,7 +80,7 @@ public class ReflectField {
 class Person {
 	public int age;
 	public String name;
-	// Ê¡ÂÔsetºÍget·½·¨
+	// çœç•¥setå’Œgetæ–¹æ³•
 	public int getAge() {
 		return age;
 	}
@@ -100,7 +100,7 @@ class Person {
 class Student extends Person {
 	public String desc;
 	private int score;
-	// Ê¡ÂÔsetºÍget·½·¨
+	// çœç•¥setå’Œgetæ–¹æ³•
 	public String getDesc() {
 		return desc;
 	}

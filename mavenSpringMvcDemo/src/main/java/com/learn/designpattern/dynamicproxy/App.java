@@ -4,21 +4,21 @@ import com.learn.designpattern.proxy.IUserDao;
 import com.learn.designpattern.proxy.UserDao;
 
 /**
-* ²âÊÔÀà
+* æµ‹è¯•ç±»
 */
 public class App {
    public static void main(String[] args) {
-       // Ä¿±ê¶ÔÏó
+       // ç›®æ ‡å¯¹è±¡
        IUserDao target = new UserDao();
-       // ¡¾Ô­Ê¼µÄÀàĞÍ class cn.itcast.b_dynamic.UserDao¡¿
+       // ã€åŸå§‹çš„ç±»å‹ class cn.itcast.b_dynamic.UserDaoã€‘
        System.out.println(target.getClass());
 
-       // ¸øÄ¿±ê¶ÔÏó£¬´´½¨´úÀí¶ÔÏó
+       // ç»™ç›®æ ‡å¯¹è±¡ï¼Œåˆ›å»ºä»£ç†å¯¹è±¡
        IUserDao proxy = (IUserDao) new ProxyFactory(target).getProxyInstance();
-       // class $Proxy0   ÄÚ´æÖĞ¶¯Ì¬Éú³ÉµÄ´úÀí¶ÔÏó
+       // class $Proxy0   å†…å­˜ä¸­åŠ¨æ€ç”Ÿæˆçš„ä»£ç†å¯¹è±¡
        System.out.println(proxy.getClass());
 
-       // Ö´ĞĞ·½·¨   ¡¾´úÀí¶ÔÏó¡¿
+       // æ‰§è¡Œæ–¹æ³•   ã€ä»£ç†å¯¹è±¡ã€‘
        proxy.save();
    }
 }

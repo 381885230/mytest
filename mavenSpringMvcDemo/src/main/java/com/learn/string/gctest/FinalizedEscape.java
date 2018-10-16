@@ -3,9 +3,9 @@ package com.learn.string.gctest;
  
 /**
 
- * @Described£ºÌÓÒİ·ÖÎö²âÊÔ
+ * @Describedï¼šé€ƒé€¸åˆ†ææµ‹è¯•
 
- * @author YHJ create at 2011-12-24 ÏÂÎç05:08:09
+ * @author YHJ create at 2011-12-24 ä¸‹åˆ05:08:09
 
  * @FileNmae com.yhj.jvm.gc.finalizeEscape.FinalizedEscape.java
 

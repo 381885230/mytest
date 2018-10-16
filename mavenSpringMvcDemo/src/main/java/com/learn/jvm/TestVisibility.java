@@ -13,9 +13,9 @@ public class TestVisibility {
                 public void run() {
                     while (true) {
                         if (flag) {
-                            // ¶àÔËĞĞ¼¸´Î£¬¿ÉÄÜ²¢²»»á´òÓ¡³öÀ´Ò²¿ÉÄÜ»á´òÓ¡³öÀ´
-                            // Èç¹û²»´òÓ¡£¬Ôò±íÊ¾Thread¿´µ½µÄÈÔÈ»ÊÇ¹¤×÷ÄÚ´æÖĞµÄflag
-                            // ¿ÉÒÔ³¢ÊÔ½«flag±ä³ÉvolatileÔÙÔËĞĞ¼¸´Î¿´¿´
+                            // å¤šè¿è¡Œå‡ æ¬¡ï¼Œå¯èƒ½å¹¶ä¸ä¼šæ‰“å°å‡ºæ¥ä¹Ÿå¯èƒ½ä¼šæ‰“å°å‡ºæ¥
+                            // å¦‚æœä¸æ‰“å°ï¼Œåˆ™è¡¨ç¤ºThreadçœ‹åˆ°çš„ä»ç„¶æ˜¯å·¥ä½œå†…å­˜ä¸­çš„flag
+                            // å¯ä»¥å°è¯•å°†flagå˜æˆvolatileå†è¿è¡Œå‡ æ¬¡çœ‹çœ‹
                                   System.out.println(Thread.currentThread().getId() + " is true now"); 
                         }
                     }
@@ -28,7 +28,7 @@ public class TestVisibility {
         flag = true;
         System.out.println("set flag true");
 
-        // µÈ´ıÏß³ÌÖ´ĞĞÍê±Ï
+        // ç­‰å¾…çº¿ç¨‹æ‰§è¡Œå®Œæ¯•
         try {
             for (Thread t : thdList) {
                 t.join();

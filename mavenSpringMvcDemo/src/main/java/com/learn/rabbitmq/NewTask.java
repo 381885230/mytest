@@ -15,7 +15,7 @@ public class NewTask {
         Connection connection=factory.newConnection();
         Channel channel=connection.createChannel();
    channel.queueDeclare(TASK_QUEUE_NAME,true,false,false,null);
-        //分发信息
+        //鍒嗗彂淇℃伅
         for (int i=0;i<10;i++){
             String message="Hello RabbitMQ"+i;
             channel.basicPublish("",TASK_QUEUE_NAME,

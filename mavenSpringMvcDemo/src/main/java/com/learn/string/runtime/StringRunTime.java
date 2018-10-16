@@ -1,13 +1,13 @@
 package com.learn.string.runtime;
 
-//²âÊÔ´úÂë  1-2ms
+//æµ‹è¯•ä»£ç   1-2ms
 public class StringRunTime {
 	public static void main(String[] args) {
-		// ¡ñ ²âÊÔ´úÂëÎ»ÖÃ1
+		// â— æµ‹è¯•ä»£ç ä½ç½®1
 		String str = "";
 		long beginTime = System.currentTimeMillis();
 		for (int i = 0; i < 1000000; i++) {
-			// ¡ñ ²âÊÔ´úÂëÎ»ÖÃ2
+			// â— æµ‹è¯•ä»£ç ä½ç½®2
 			str = "Heart" + "Raid";
 		}
 		long endTime = System.currentTimeMillis();

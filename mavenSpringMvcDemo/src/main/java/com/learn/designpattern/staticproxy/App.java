@@ -3,16 +3,16 @@ package com.learn.designpattern.staticproxy;
 import com.learn.designpattern.proxy.UserDao;
 
 /**
-* ²âÊÔÀà
+* æµ‹è¯•ç±»
 */
 public class App {
    public static void main(String[] args) {
-       //Ä¿±ê¶ÔÏó
+       //ç›®æ ‡å¯¹è±¡
        UserDao target = new UserDao();
 
-       //´úÀí¶ÔÏó,°ÑÄ¿±ê¶ÔÏó´«¸ø´úÀí¶ÔÏó,½¨Á¢´úÀí¹ØÏµ
+       //ä»£ç†å¯¹è±¡,æŠŠç›®æ ‡å¯¹è±¡ä¼ ç»™ä»£ç†å¯¹è±¡,å»ºç«‹ä»£ç†å…³ç³»
        UserDaoProxy proxy = new UserDaoProxy(target);
 
-       proxy.save();//Ö´ĞĞµÄÊÇ´úÀíµÄ·½·¨
+       proxy.save();//æ‰§è¡Œçš„æ˜¯ä»£ç†çš„æ–¹æ³•
    }
 }

@@ -7,25 +7,25 @@ package com.learn.es;
 // 
 //public class Test {
 //    public static void main(String[] args) {
-//        //´´½¨¶ÔÏó£¬ÉèÖÃ¼¯ÈºÃû³ÆºÍIPµØÖ·
+//        //åˆ›å»ºå¯¹è±¡ï¼Œè®¾ç½®é›†ç¾¤åç§°å’ŒIPåœ°å€
 //        ElasticsearchUtils es = new ElasticsearchUtils("im_shan",
 //                "localhost");
-//        String indexName = "school";//Ë÷ÒıÃû³Æ
-//        String typeName = "student";//ÀàĞÍÃû³Æ
+//        String indexName = "school";//ç´¢å¼•åç§°
+//        String typeName = "student";//ç±»å‹åç§°
 //        String id = "1";
 //        String jsonData = "{" + "\"name\":\"kimchy\","
 //                + "\"birth\":\"1995-01-30\"," + "\"email\":\"kimchy@163.com\""
-//                + "}";//jsonÊı¾İ
-//        //1.´´½¨Ë÷Òı(ID¿É×Ô¶¨ÒåÒ²¿ÉÒÔ×Ô¶¯´´½¨£¬´Ë´¦Ê¹ÓÃ×Ô¶¨ÒåID)
+//                + "}";//jsonæ•°æ®
+//        //1.åˆ›å»ºç´¢å¼•(IDå¯è‡ªå®šä¹‰ä¹Ÿå¯ä»¥è‡ªåŠ¨åˆ›å»ºï¼Œæ­¤å¤„ä½¿ç”¨è‡ªå®šä¹‰ID)
 //        es.createIndex(indexName, typeName, id, jsonData);
 // 
-//        //2.Ö´ĞĞ²éÑ¯
-//        //(1)´´½¨²éÑ¯Ìõ¼ş
-//        QueryBuilder queryBuilder = QueryBuilders.termQuery("name", "kimchy");//ËÑË÷nameÎªkimchyµÄÊı¾İ
-//        //(2)Ö´ĞĞ²éÑ¯
+//        //2.æ‰§è¡ŒæŸ¥è¯¢
+//        //(1)åˆ›å»ºæŸ¥è¯¢æ¡ä»¶
+//        QueryBuilder queryBuilder = QueryBuilders.termQuery("name", "kimchy");//æœç´¢nameä¸ºkimchyçš„æ•°æ®
+//        //(2)æ‰§è¡ŒæŸ¥è¯¢
 //        SearchResponse searchResponse = es.searcher(indexName, typeName,
 //            queryBuilder);
-//        //(3)½âÎö½á¹û
+//        //(3)è§£æç»“æœ
 //        SearchHits hits = searchResponse.getHits();
 //        SearchHit[] searchHits = hits.getHits();
 //        for (SearchHit searchHit : searchHits) {
@@ -37,12 +37,12 @@ package com.learn.es;
 //            System.out.println(email);
 //        }
 // 
-//        //3.¸üĞÂÊı¾İ
+//        //3.æ›´æ–°æ•°æ®
 //        jsonData = "{" + "\"name\":\"jack\"," + "\"birth\":\"1996-01-30\","
-//                + "\"email\":\"jack@163.com\"" + "}";//jsonÊı¾İ
+//                + "\"email\":\"jack@163.com\"" + "}";//jsonæ•°æ®
 //        es.updateIndex(indexName, typeName, id, jsonData);
 // 
-//        //4.É¾³ıÊı¾İ
+//        //4.åˆ é™¤æ•°æ®
 //        es.deleteIndex(indexName, typeName, id);
 //    }
 //}

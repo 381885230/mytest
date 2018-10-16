@@ -3,7 +3,7 @@ package com.learn.designpattern.facade;
 import org.apache.log4j.Logger;
 
 /**
- * 客户端类
+ * 瀹㈡埛绔被
  * @author Administrator
  *
  */

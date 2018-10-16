@@ -1,6 +1,6 @@
 package com.learn.designpattern.proxy;
 /**
-* ½Ó¿Ú
+* æ¥å£
 */
 public interface IUserDao {
    void save();

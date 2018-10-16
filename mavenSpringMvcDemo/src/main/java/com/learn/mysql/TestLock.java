@@ -6,12 +6,12 @@ import java.util.concurrent.Executors;
 
 public class TestLock {    
     public static void main(String[] args) throws InterruptedException {
-        //´´½¨Ïß³Ì³Ø£¬ÀïÃæÓĞ10¸öÏß³Ì£¬¹²Ö´ĞĞ100´Î+1²Ù×÷
+        //åˆ›å»ºçº¿ç¨‹æ± ï¼Œé‡Œé¢æœ‰10ä¸ªçº¿ç¨‹ï¼Œå…±æ‰§è¡Œ100æ¬¡+1æ“ä½œ
         final int THREAD_COUNT=10;
         final int RUN_TIME=50;
         
         ExecutorService threadPool=Executors.newFixedThreadPool(THREAD_COUNT);
-        //ÓÃCountDownLatch±£Ö¤Ö÷Ïß³ÌµÈ´ıËùÓĞÈÎÎñÍê³É
+        //ç”¨CountDownLatchä¿è¯ä¸»çº¿ç¨‹ç­‰å¾…æ‰€æœ‰ä»»åŠ¡å®Œæˆ
         CountDownLatch count=new CountDownLatch(RUN_TIME);
         
         for(int i=0;i<RUN_TIME;i++)
@@ -19,7 +19,7 @@ public class TestLock {
         
         threadPool.shutdown();
         count.await();
-        //ÌáÊ¾ËùÓĞÈÎÎñÖ´ĞĞÍê
+        //æç¤ºæ‰€æœ‰ä»»åŠ¡æ‰§è¡Œå®Œ
         System.out.println("finish");
     }
 }

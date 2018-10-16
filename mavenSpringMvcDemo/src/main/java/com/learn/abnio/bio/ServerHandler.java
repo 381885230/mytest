@@ -7,9 +7,9 @@ import java.net.Socket;
 
 import com.learn.abnio.Calculator;
 /** 
- * ¿Í»§¶ËÏß³Ì 
+ * å®¢æˆ·ç«¯çº¿ç¨‹ 
  * @author yangtao__anxpp.com 
- * ÓÃÓÚ´¦ÀíÒ»¸ö¿Í»§¶ËµÄSocketÁ´Â· 
+ * ç”¨äºå¤„ç†ä¸€ä¸ªå®¢æˆ·ç«¯çš„Socketé“¾è·¯ 
  */  
 public class ServerHandler implements Runnable{  
     private Socket socket;  
@@ -26,22 +26,22 @@ public class ServerHandler implements Runnable{
             String expression;  
             String result;  
             while(true){  
-                //Í¨¹ıBufferedReader¶ÁÈ¡Ò»ĞĞ  
-                //Èç¹ûÒÑ¾­¶Áµ½ÊäÈëÁ÷Î²²¿£¬·µ»Ønull,ÍË³öÑ­»·  
-                //Èç¹ûµÃµ½·Ç¿ÕÖµ£¬¾Í³¢ÊÔ¼ÆËã½á¹û²¢·µ»Ø  
+                //é€šè¿‡BufferedReaderè¯»å–ä¸€è¡Œ  
+                //å¦‚æœå·²ç»è¯»åˆ°è¾“å…¥æµå°¾éƒ¨ï¼Œè¿”å›null,é€€å‡ºå¾ªç¯  
+                //å¦‚æœå¾—åˆ°éç©ºå€¼ï¼Œå°±å°è¯•è®¡ç®—ç»“æœå¹¶è¿”å›  
                 if((expression = in.readLine())==null) break;  
-                System.out.println("·şÎñÆ÷ÊÕµ½ÏûÏ¢£º" + expression);  
+                System.out.println("æœåŠ¡å™¨æ”¶åˆ°æ¶ˆæ¯ï¼š" + expression);  
                 try{  
                     result = Calculator.cal(expression).toString();  
                 }catch(Exception e){  
-                    result = "¼ÆËã´íÎó£º" + e.getMessage();  
+                    result = "è®¡ç®—é”™è¯¯ï¼š" + e.getMessage();  
                 }  
                 out.println(result);  
             }  
         }catch(Exception e){  
             e.printStackTrace();  
         }finally{  
-            //Ò»Ğ©±ØÒªµÄÇåÀí¹¤×÷  
+            //ä¸€äº›å¿…è¦çš„æ¸…ç†å·¥ä½œ  
             if(in != null){  
                 try {  
                     in.close();  

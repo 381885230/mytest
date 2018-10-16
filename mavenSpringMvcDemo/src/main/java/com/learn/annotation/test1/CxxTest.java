@@ -10,11 +10,11 @@ import java.lang.reflect.Method;
 public class CxxTest {
     @Cxx(value = "test1")
     public void test1(){
-        System.out.println("test1()方法");
+        System.out.println("test1()鏂规硶");
     }
     @Cxx("test2")
     public void test2(){
-        System.out.println("test2()方法");
+        System.out.println("test2()鏂规硶");
     }
  
     public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, IllegalArgumentException, InstantiationException {

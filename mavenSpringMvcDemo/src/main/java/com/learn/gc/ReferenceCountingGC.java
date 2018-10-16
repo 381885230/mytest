@@ -8,7 +8,7 @@ public class ReferenceCountingGC {
 		ReferenceCountingGC objA = new ReferenceCountingGC();
 		ReferenceCountingGC objB = new ReferenceCountingGC();
 
-		// ¶ÔÏóÖ®¼äÏà»¥Ñ­»·ÒıÓÃ£¬¶ÔÏóobjAºÍobjBÖ®¼äµÄÒıÓÃ¼ÆÊıÓÀÔ¶²»¿ÉÄÜÎª 0
+		// å¯¹è±¡ä¹‹é—´ç›¸äº’å¾ªç¯å¼•ç”¨ï¼Œå¯¹è±¡objAå’ŒobjBä¹‹é—´çš„å¼•ç”¨è®¡æ•°æ°¸è¿œä¸å¯èƒ½ä¸º 0
 		objB.instance = objA;
 		objA.instance = objB;
 

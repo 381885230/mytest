@@ -27,9 +27,9 @@ public class LostUpdate implements Runnable{
         
         try {
             conn.setAutoCommit(false);
-            //²»¼ÓËøµÄÇé¿ö
+            //ä¸åŠ é”çš„æƒ…å†µ
             //PreparedStatement ps =conn.prepareStatement("select * from LostUpdate where id =1");
-            //¼ÓËøµÄÇé¿ö
+            //åŠ é”çš„æƒ…å†µ
             PreparedStatement ps =conn.prepareStatement("select * from LostUpdate where id =1 for update");
             ResultSet rs=ps.executeQuery();
             int count = 0;
@@ -51,7 +51,7 @@ public class LostUpdate implements Runnable{
             }
             e.printStackTrace();
         }
-        //±íÊ¾Ò»´ÎÈÎÎñÍê³É
+        //è¡¨ç¤ºä¸€æ¬¡ä»»åŠ¡å®Œæˆ
         countDown.countDown();
     }
 }

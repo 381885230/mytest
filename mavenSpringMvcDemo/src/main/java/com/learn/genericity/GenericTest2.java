@@ -1,9 +1,9 @@
 package com.learn.genericity;
 
 /**
- * ÀàÐÍÍ¨Åä·ûÒ»°ãÊÇÊ¹ÓÃ ? ´úÌæ¾ßÌåµÄÀàÐÍÊµ²Î¡£×¢ÒâÁË£¬´Ë´¦ÊÇÀàÐÍÊµ²Î£¬¶ø²»ÊÇÀàÐÍÐÎ²Î£¡
- * ÇÒBox<?>ÔÚÂß¼­ÉÏÊÇBox<Integer>¡¢Box<Number>...µÈËùÓÐBox<¾ßÌåÀàÐÍÊµ²Î>µÄ¸¸Àà¡£
- * ÓÉ´Ë£¬ÎÒÃÇÒÀÈ»¿ÉÒÔ¶¨Òå·ºÐÍ·½·¨£¬À´Íê³É´ËÀàÐèÇó¡£
+ * ç±»åž‹é€šé…ç¬¦ä¸€èˆ¬æ˜¯ä½¿ç”¨ ? ä»£æ›¿å…·ä½“çš„ç±»åž‹å®žå‚ã€‚æ³¨æ„äº†ï¼Œæ­¤å¤„æ˜¯ç±»åž‹å®žå‚ï¼Œè€Œä¸æ˜¯ç±»åž‹å½¢å‚ï¼
+ * ä¸”Box<?>åœ¨é€»è¾‘ä¸Šæ˜¯Box<Integer>ã€Box<Number>...ç­‰æ‰€æœ‰Box<å…·ä½“ç±»åž‹å®žå‚>çš„çˆ¶ç±»ã€‚
+ * ç”±æ­¤ï¼Œæˆ‘ä»¬ä¾ç„¶å¯ä»¥å®šä¹‰æ³›åž‹æ–¹æ³•ï¼Œæ¥å®Œæˆæ­¤ç±»éœ€æ±‚ã€‚
  * @author admin
  *
  */

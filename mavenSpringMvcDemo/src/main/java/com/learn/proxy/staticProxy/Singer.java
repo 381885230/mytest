@@ -1,9 +1,9 @@
 package com.learn.proxy.staticProxy;
 /**
- * 目标对象实现了某一接口
+ * 鐩爣瀵硅薄瀹炵幇浜嗘煇涓�鎺ュ彛
  */
 public class Singer implements ISinger {
 	public void sing() {
-		System.out.println("Singer:唱一首歌");
+		System.out.println("Singer:鍞变竴棣栨瓕");
 	}
 }

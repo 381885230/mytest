@@ -10,39 +10,39 @@ public class TestMap {
         map.put(2, "b");
         map.put(3, "ab");
         map.put(4, "ab");
-        map.put(4, "abc");// ºÍÉÏÃæÏàÍ¬ £¬ »á×Ô¼ºÉ¸Ñ¡
+        map.put(4, "abc");// å’Œä¸Šé¢ç›¸åŒ ï¼Œ ä¼šè‡ªå·±ç­›é€‰
         System.out.println(map.size());
-        // µÚÒ»ÖÖ£º
+        // ç¬¬ä¸€ç§ï¼š
         /*
-         * Set<Integer> set = map.keySet(); //µÃµ½ËùÓĞkeyµÄ¼¯ºÏ
+         * Set<Integer> set = map.keySet(); //å¾—åˆ°æ‰€æœ‰keyçš„é›†åˆ
          * 
          * for (Integer in : set) { String str = map.get(in);
          * System.out.println(in + "     " + str); }
          */
-        System.out.println("µÚÒ»ÖÖ£ºÍ¨¹ıMap.keySet±éÀúkeyºÍvalue£º");
+        System.out.println("ç¬¬ä¸€ç§ï¼šé€šè¿‡Map.keySetéå†keyå’Œvalueï¼š");
         for (Integer in : map.keySet()) {
-            //map.keySet()·µ»ØµÄÊÇËùÓĞkeyµÄÖµ
-            String str = map.get(in);//µÃµ½Ã¿¸ökey¶à¶ÔÓÃvalueµÄÖµ
+            //map.keySet()è¿”å›çš„æ˜¯æ‰€æœ‰keyçš„å€¼
+            String str = map.get(in);//å¾—åˆ°æ¯ä¸ªkeyå¤šå¯¹ç”¨valueçš„å€¼
             System.out.println(in + "     " + str);
         }
-        // µÚ¶şÖÖ£º
-        System.out.println("µÚ¶şÖÖ£ºÍ¨¹ıMap.entrySetÊ¹ÓÃiterator±éÀúkeyºÍvalue£º");
+        // ç¬¬äºŒç§ï¼š
+        System.out.println("ç¬¬äºŒç§ï¼šé€šè¿‡Map.entrySetä½¿ç”¨iteratoréå†keyå’Œvalueï¼š");
         Iterator<Map.Entry<Integer, String>> it = map.entrySet().iterator();
         while (it.hasNext()) {
              Map.Entry<Integer, String> entry = it.next();
                System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
         }
-        // µÚÈıÖÖ£ºÍÆ¼ö£¬ÓÈÆäÊÇÈİÁ¿´óÊ±
-        System.out.println("µÚÈıÖÖ£ºÍ¨¹ıMap.entrySet±éÀúkeyºÍvalue");
+        // ç¬¬ä¸‰ç§ï¼šæ¨èï¼Œå°¤å…¶æ˜¯å®¹é‡å¤§æ—¶
+        System.out.println("ç¬¬ä¸‰ç§ï¼šé€šè¿‡Map.entrySetéå†keyå’Œvalue");
         for (Map.Entry<Integer, String> entry : map.entrySet()) {
-            //Map.entry<Integer,String> Ó³ÉäÏî£¨¼ü-Öµ¶Ô£©  ÓĞ¼¸¸ö·½·¨£ºÓÃÉÏÃæµÄÃû×Öentry
+            //Map.entry<Integer,String> æ˜ å°„é¡¹ï¼ˆé”®-å€¼å¯¹ï¼‰  æœ‰å‡ ä¸ªæ–¹æ³•ï¼šç”¨ä¸Šé¢çš„åå­—entry
             //entry.getKey() ;entry.getValue(); entry.setValue();
-            //map.entrySet()  ·µ»Ø´ËÓ³ÉäÖĞ°üº¬µÄÓ³Éä¹ØÏµµÄ SetÊÓÍ¼¡£
+            //map.entrySet()  è¿”å›æ­¤æ˜ å°„ä¸­åŒ…å«çš„æ˜ å°„å…³ç³»çš„ Setè§†å›¾ã€‚
             System.out.println("key= " + entry.getKey() + " and value= "
                     + entry.getValue());
         }
-        // µÚËÄÖÖ£º
-        System.out.println("µÚËÄÖÖ£ºÍ¨¹ıMap.values()±éÀúËùÓĞµÄvalue£¬µ«²»ÄÜ±éÀúkey");
+        // ç¬¬å››ç§ï¼š
+        System.out.println("ç¬¬å››ç§ï¼šé€šè¿‡Map.values()éå†æ‰€æœ‰çš„valueï¼Œä½†ä¸èƒ½éå†key");
         for (String v : map.values()) {
             System.out.println("value= " + v);
         }

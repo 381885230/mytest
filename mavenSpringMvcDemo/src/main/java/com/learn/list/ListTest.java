@@ -34,15 +34,15 @@ public class ListTest {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("ArrayListÌí¼Ó" + N + "ÌõºÄÊ±£º"
+		System.out.println("ArrayListæ·»åŠ " + N + "æ¡è€—æ—¶ï¼š"
 				+ timeList(new ArrayList()));
-		System.out.println("LinkedListÌí¼Ó" + N + "ÌõºÄÊ±£º"
+		System.out.println("LinkedListæ·»åŠ " + N + "æ¡è€—æ—¶ï¼š"
 				+ timeList(new LinkedList()));
 
 		List list1 = addList(new ArrayList<>());
 		List list2 = addList(new LinkedList<>());
-		System.out.println("ArrayList²éÕÒ" + N + "ÌõºÄÊ±£º" + readList(list1));
-		System.out.println("LinkedList²éÕÒ" + N + "ÌõºÄÊ±£º" + timeList(list2));
+		System.out.println("ArrayListæŸ¥æ‰¾" + N + "æ¡è€—æ—¶ï¼š" + readList(list1));
+		System.out.println("LinkedListæŸ¥æ‰¾" + N + "æ¡è€—æ—¶ï¼š" + timeList(list2));
 	}
 
 }

@@ -1,19 +1,19 @@
 package com.learn.proxy.staticProxy;
 /*
- *  ´úÀí¶ÔÏóºÍÄ¿±ê¶ÔÏóÊµÏÖÏàÍ¬µÄ½Ó¿Ú
+ *  ä»£ç†å¯¹è±¡å’Œç›®æ ‡å¯¹è±¡å®ç°ç›¸åŒçš„æ¥å£
  */
 public class SingerProxy implements ISinger {
-	// ½ÓÊÕÄ¿±ê¶ÔÏó£¬ÒÔ±ãµ÷ÓÃsing·½·¨
+	// æ¥æ”¶ç›®æ ‡å¯¹è±¡ï¼Œä»¥ä¾¿è°ƒç”¨singæ–¹æ³•
 	private ISinger target;
 
 	public SingerProxy(ISinger target) {
 		this.target = target;
 	}
 
-	// ¶ÔÄ¿±ê¶ÔÏóµÄsing·½·¨½øĞĞ¹¦ÄÜÀ©Õ¹
+	// å¯¹ç›®æ ‡å¯¹è±¡çš„singæ–¹æ³•è¿›è¡ŒåŠŸèƒ½æ‰©å±•
 	public void sing() {
-		System.out.println("SingerProxy:Ïò¹ÛÖÚÎÊºÃ");
+		System.out.println("SingerProxy:å‘è§‚ä¼—é—®å¥½");
 		target.sing();
-		System.out.println("SingerProxy:Ğ»Ğ»´ó¼Ò");
+		System.out.println("SingerProxy:è°¢è°¢å¤§å®¶");
 	}
 }

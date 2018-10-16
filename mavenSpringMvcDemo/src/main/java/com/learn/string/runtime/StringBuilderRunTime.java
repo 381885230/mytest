@@ -1,14 +1,14 @@
 package com.learn.string.runtime;
 
-//²âÊÔ´úÂë  20-25
+//æµ‹è¯•ä»£ç   20-25
 public class StringBuilderRunTime {
 	public static void main(String[] args) {
-		// ¡ñ ²âÊÔ´úÂëÎ»ÖÃ1
+		// â— æµ‹è¯•ä»£ç ä½ç½®1
 		String s1 = "Heart";
 		StringBuilder sb = new StringBuilder();
 		long beginTime = System.currentTimeMillis();
 		for (int i = 0; i < 1000000; i++) {
-			// ¡ñ ²âÊÔ´úÂëÎ»ÖÃ2
+			// â— æµ‹è¯•ä»£ç ä½ç½®2
 			sb.append(s1);
 		}
 //		sb.toString();

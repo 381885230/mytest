@@ -15,19 +15,19 @@ public class Customer {
     private final static String QUEUE_NAME = "rabbitMQ.test";
 
     public static void main(String[] args) throws IOException, TimeoutException {
-        // ´´½¨Á¬½Ó¹¤³§
+        // åˆ›å»ºè¿æ¥å·¥å‚
         ConnectionFactory factory = new ConnectionFactory();
-        //ÉèÖÃRabbitMQµØÖ·
+        //è®¾ç½®RabbitMQåœ°å€
         factory.setHost("localhost");
-        //´´½¨Ò»¸öĞÂµÄÁ¬½Ó
+        //åˆ›å»ºä¸€ä¸ªæ–°çš„è¿æ¥
         Connection connection = factory.newConnection();
-        //´´½¨Ò»¸öÍ¨µÀ
+        //åˆ›å»ºä¸€ä¸ªé€šé“
         Channel channel = connection.createChannel();
-        //ÉùÃ÷Òª¹Ø×¢µÄ¶ÓÁĞ
+        //å£°æ˜è¦å…³æ³¨çš„é˜Ÿåˆ—
         channel.queueDeclare(QUEUE_NAME, false, false, true, null);
         System.out.println("Customer Waiting Received messages");
-        //DefaultConsumerÀàÊµÏÖÁËConsumer½Ó¿Ú£¬Í¨¹ı´«ÈëÒ»¸öÆµµÀ£¬
-        // ¸æËß·şÎñÆ÷ÎÒÃÇĞèÒªÄÇ¸öÆµµÀµÄÏûÏ¢£¬Èç¹ûÆµµÀÖĞÓĞÏûÏ¢£¬¾Í»áÖ´ĞĞ»Øµ÷º¯ÊıhandleDelivery
+        //DefaultConsumerç±»å®ç°äº†Consumeræ¥å£ï¼Œé€šè¿‡ä¼ å…¥ä¸€ä¸ªé¢‘é“ï¼Œ
+        // å‘Šè¯‰æœåŠ¡å™¨æˆ‘ä»¬éœ€è¦é‚£ä¸ªé¢‘é“çš„æ¶ˆæ¯ï¼Œå¦‚æœé¢‘é“ä¸­æœ‰æ¶ˆæ¯ï¼Œå°±ä¼šæ‰§è¡Œå›è°ƒå‡½æ•°handleDelivery
         Consumer consumer = new DefaultConsumer(channel) {
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope,
@@ -37,7 +37,7 @@ public class Customer {
                 System.out.println("Customer Received '" + message + "'");
             }
         };
-        //×Ô¶¯»Ø¸´¶ÓÁĞÓ¦´ğ -- RabbitMQÖĞµÄÏûÏ¢È·ÈÏ»úÖÆ
+        //è‡ªåŠ¨å›å¤é˜Ÿåˆ—åº”ç­” -- RabbitMQä¸­çš„æ¶ˆæ¯ç¡®è®¤æœºåˆ¶
         channel.basicConsume(QUEUE_NAME, true, consumer);
     }
 }    

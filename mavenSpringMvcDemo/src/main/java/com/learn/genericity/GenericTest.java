@@ -1,8 +1,8 @@
 package com.learn.genericity;
 
 /**
- * ÀàÐÍÍ¨Åä·ûÉÏÏÞÍ¨¹ýÐÎÈçBox<? extends Number>ÐÎÊ½¶¨Òå£¬
- * Ïà¶ÔÓ¦µÄ£¬ÀàÐÍÍ¨Åä·ûÏÂÏÞÎªBox<? super Number>ÐÎÊ½£¬Æäº¬ÒåÓëÀàÐÍÍ¨Åä·ûÉÏÏÞÕýºÃÏà·´
+ * ç±»åž‹é€šé…ç¬¦ä¸Šé™é€šè¿‡å½¢å¦‚Box<? extends Number>å½¢å¼å®šä¹‰ï¼Œ
+ * ç›¸å¯¹åº”çš„ï¼Œç±»åž‹é€šé…ç¬¦ä¸‹é™ä¸ºBox<? super Number>å½¢å¼ï¼Œå…¶å«ä¹‰ä¸Žç±»åž‹é€šé…ç¬¦ä¸Šé™æ­£å¥½ç›¸å
  * @author admin
  *
  */
