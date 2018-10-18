@@ -1,13 +1,19 @@
 package com.learn.rsa;
-import org.apache.commons.codec.binary.Base64;
-
-import java.security.*;
+import java.security.Key;
+import java.security.KeyFactory;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.Signature;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.crypto.Cipher;
+
+import org.apache.commons.codec.binary.Base64;
  
 /**
  * 
@@ -64,7 +70,7 @@ public class RSACoder {
      * @return 校验成功返回true 失败返回false
      * @throws Exception
      */
-    public static boolean verify(byte[] data, String publicKey, String sign)
+    public static boolean verifySign(byte[] data, String publicKey, String sign)
             throws Exception {
         // 解密由base64编码的公钥
         byte[] keyBytes = decryptBASE64(publicKey);
@@ -224,29 +230,20 @@ public class RSACoder {
         Map<String, Key> keyMap = initKey();
         String publicKey = getPublicKey(keyMap);
         String privateKey = getPrivateKey(keyMap);
-        
-        System.out.println(keyMap);
-        System.out.println("-----------------------------------");
-        System.out.println(publicKey);
-        System.out.println("-----------------------------------");
-        System.out.println(privateKey);
-        System.out.println("-----------------------------------");
+        System.out.println("publicKey:"+publicKey);
+        System.out.println("privateKey:"+privateKey);
+
         byte[] encryptByPrivateKey = encryptByPrivateKey("123456".getBytes(),privateKey);
         byte[] encryptByPublicKey = encryptByPublicKey("123456",publicKey);
-        System.out.println(new String(encryptByPrivateKey));
-        System.out.println("-----------------------------------");
-        System.out.println(new String(encryptByPublicKey));
-        System.out.println("-----------------------------------");
+        System.out.println("加密后私钥"+new String(encryptByPrivateKey));
+        System.out.println("加密后公钥"+new String(encryptByPublicKey));
         String sign = sign(encryptByPrivateKey,privateKey);
         System.out.println(sign);
-        System.out.println("-----------------------------------");
-        boolean verify = verify(encryptByPrivateKey,publicKey,sign);
+        boolean verify = verifySign(encryptByPrivateKey,publicKey,sign);
         System.out.println(verify);
-        System.out.println("-----------------------------------");
         byte[] decryptByPublicKey = decryptByPublicKey(encryptByPrivateKey,publicKey);
         byte[] decryptByPrivateKey = decryptByPrivateKey(encryptByPublicKey,privateKey);
         System.out.println(new String(decryptByPublicKey));
-        System.out.println("-----------------------------------");
         System.out.println(new String(decryptByPrivateKey));
         
     }
