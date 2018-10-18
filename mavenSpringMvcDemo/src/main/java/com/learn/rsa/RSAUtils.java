@@ -14,6 +14,12 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+* @ClassName: RSAUtils
+* @Description: 加解密
+* @author yuanjin
+* @date 2018年10月18日
+ */
 public class RSAUtils {
 
 	public static final String CHARSET = "UTF-8";

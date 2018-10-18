@@ -10,7 +10,11 @@ import java.util.Map;
 import javax.crypto.Cipher;
  
 /**
- * Created by humf.需要依赖 commons-codec 包 
+ * 
+* @ClassName: RSACoder
+* @Description: 数字签名
+* @author yuanjin
+* @date 2018年10月18日
  */
 public class RSACoder {
     public static final String KEY_ALGORITHM = "RSA";
