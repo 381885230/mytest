@@ -19,7 +19,7 @@ public class SpringRetryTest {
                 @Override
                 public Object doWithRetry(RetryContext context) throws Exception {// 开始重试
                     System.out.println(params);
-                    testRedo();
+                    myService();
                     return "此处可返回操作结果";
                 }
             }, new RecoveryCallback<Object>() {
@@ -33,7 +33,7 @@ public class SpringRetryTest {
         }
     }
 
-    private static void testRedo() {
+    private static void myService() {
         System.out.println("执行Redo代码");
         throw new RuntimeException();
     }
