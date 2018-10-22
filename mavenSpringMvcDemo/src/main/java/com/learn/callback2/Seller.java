@@ -12,7 +12,7 @@ public class Seller {
 		this.name = name;
 	}
 
-	public class doHomeWork implements doJob {
+	public class doHomeWork implements CallBack {
 
 		@Override
 		public void fillBlank(int a, int b, int result) {
