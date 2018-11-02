@@ -79,7 +79,7 @@ public class MyDispatcherServlet extends HttpServlet{
 		//调用doGet或doPost方法
 		
 		//提示信息
-		System.out.println("my mini spring is init");
+		System.out.println("===============my mini spring is init===============");
 		
 	}
 	
@@ -104,16 +104,16 @@ public class MyDispatcherServlet extends HttpServlet{
 			//获取method的url配置
 			Method[] methods=clazz.getMethods();
 			
-			for(Method m:methods){
+			for(Method method:methods){
 				//没加MyRequestMapping注解的忽略
-				if(!m.isAnnotationPresent(MyRequestMapping.class)){
+				if(!method.isAnnotationPresent(MyRequestMapping.class)){
 					continue;
 				}
 				//映射url
-				MyRequestMapping myrequestmapping=m.getAnnotation(MyRequestMapping.class);
+				MyRequestMapping myrequestmapping=method.getAnnotation(MyRequestMapping.class);
 				String url=("/"+baseUrl+"/"+myrequestmapping.value()).replaceAll("/+", "/");
-				handlerMapping.put(url, m);
-				System.out.println("mapped:"+url+","+m);
+				handlerMapping.put(url, method);
+				System.out.println("mapped:"+url+"==="+method);
 			}
 		}
 	}
@@ -135,7 +135,7 @@ public class MyDispatcherServlet extends HttpServlet{
 				MyAutowired autowired=field.getAnnotation(MyAutowired.class);
 				String beanName=autowired.value().trim();
 				if("".equals(beanName)){
-					beanName=field.getType().getName();
+					beanName=field.getType().getSimpleName();//与放入ioc容器对应
 				}
 				//设置私有属性的访问权限
 				field.setAccessible(true);
@@ -174,7 +174,7 @@ public class MyDispatcherServlet extends HttpServlet{
 					//没设置就按接口类型创建一个实例
 					Class<?>[] interfaces=clazz.getInterfaces();
 					for(Class<?> inf:interfaces){
-						ioc.put(inf.getName(), clazz.newInstance());
+						ioc.put(inf.getSimpleName(), clazz.newInstance());//与从ioc容器取值对应
 					}
 					
 				}else{
@@ -253,6 +253,85 @@ public class MyDispatcherServlet extends HttpServlet{
 		Class<?>[] parameterTypes=method.getParameterTypes();
 		//获取请求的参数
 		Map<String,String[]> parameterMap=req.getParameterMap();
+		
+		//参数转存为list便于按类型取值
+		List<Object> paramList=new ArrayList<Object>();
+		
+		//保存参数值
+		Object[] paramValues=new Object[parameterTypes.length];
+		//方法的参数列表
+		for(int i=0;i<parameterTypes.length;i++){
+			//根据参数名称做处理
+			Class paramType=parameterTypes[i];
+			if(paramType==HttpServletRequest.class){
+				//参数类型明确的，强转
+				paramValues[i]=req;
+				paramList.add(paramValues[i]);
+				continue;
+			}else if(paramType==HttpServletResponse.class){
+				paramValues[i]=resp;
+				paramList.add(paramValues[i]);
+				continue;				
+			}else{
+				for(Entry<String, String[]> param:parameterMap.entrySet()){
+					Integer value=Integer.parseInt(Arrays.toString(param.getValue()).replaceAll("\\[|\\]", "").replaceAll(",\\s", ","));
+					paramValues[i]=value;
+					paramList.add(value);
+				}	
+				break;				
+			}
+		}
+		
+		Object[] paramValuesForMethod=new Object[parameterTypes.length];
+		for(int i=0;i<paramList.size();i++){
+			Class paramType=parameterTypes[i];
+			if(paramType==HttpServletRequest.class){
+				//参数类型明确的，强转
+				paramValuesForMethod[i]=req;
+				continue;
+			}else if(paramType==HttpServletResponse.class){
+				paramValuesForMethod[i]=resp;
+				continue;				
+			}else if(paramType==String.class){
+					paramValuesForMethod[i]=(String)paramList.get(i);
+			}else if(paramType==Integer.class){
+				paramValuesForMethod[i]=(Integer)paramList.get(i);
+			}			
+		}
+		
+		try {
+			String beanName=lowerFirstCase(method.getDeclaringClass().getSimpleName());//????
+			//反射机制调用
+			method.invoke(ioc.get(beanName), paramValuesForMethod);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
+	}
+
+	/**
+	 * 原来的doDispatch方法有问题，当有多个同类型参数时，后一个的值会覆盖前一个，本人已改进
+	 * @param req
+	 * @param resp
+	 * @throws IOException
+	 */
+	private void doDispatchOriginal(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		if(handlerMapping.isEmpty()){
+			return;
+		}
+		String url=req.getRequestURI();
+		String contextPath=req.getContextPath();
+		url=url.replace(contextPath, "").replaceAll("/+", "/");
+		
+		if(!handlerMapping.containsKey(url)){
+			resp.getWriter().write("404 not found");
+		}
+		
+		Method method=handlerMapping.get(url);
+		//获取方法的参数列表
+		Class<?>[] parameterTypes=method.getParameterTypes();
+		//获取请求的参数
+		Map<String,String[]> parameterMap=req.getParameterMap();
 		//保存参数值
 		Object[] paramValues=new Object[parameterTypes.length];
 		//方法的参数列表
@@ -267,11 +346,13 @@ public class MyDispatcherServlet extends HttpServlet{
 				paramValues[i]=resp;
 				continue;				
 			}else if(paramType==String.class){
+				//此处同类型的参数值会覆盖
 				for(Entry<String, String[]> param:parameterMap.entrySet()){
 					String value=Arrays.toString(param.getValue()).replaceAll("\\[|\\]", "").replaceAll(",\\s", ",");
 					paramValues[i]=value;
 				}
 			}else if(paramType==Integer.class){
+				//此处同类型的参数值会覆盖
 				for(Entry<String, String[]> param:parameterMap.entrySet()){
 					Integer value=Integer.parseInt(Arrays.toString(param.getValue()).replaceAll("\\[|\\]", "").replaceAll(",\\s", ","));
 					paramValues[i]=value;
@@ -288,8 +369,12 @@ public class MyDispatcherServlet extends HttpServlet{
 			e.printStackTrace();
 		} 
 		
-	}
-
+	}	
+	
+	
+	
+	
+	
 	/**
 	 * 首字母小写
 	 * @param s
