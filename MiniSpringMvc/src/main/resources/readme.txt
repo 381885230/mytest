@@ -1,0 +1,5 @@
+1.mini版的spring mvc
+.支持Service，Controller，Autowired，RequestParam，RequestMapping注解
+.参数类型支持String，Integer
+
+2.dispatcherservlet中添加多个post方法测试HttpServletRequest
