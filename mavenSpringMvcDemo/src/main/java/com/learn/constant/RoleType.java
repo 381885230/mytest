@@ -49,11 +49,11 @@ public enum RoleType {
 	}
 
 	/**
-	 * 转换为'KAV'列表
+	 * 转换为'Kv'列表
 	 * 
-	 * @return List<Kav>
+	 * @return List<Kv>
 	 */
-	public static List<Kv> toKavs() {
+	public static List<Kv> toKvs() {
 		List<Kv> kvs = new ArrayList<Kv>();
 		RoleType[] enums = RoleType.values();
 		for (int i = 0; i < enums.length; i++) {
