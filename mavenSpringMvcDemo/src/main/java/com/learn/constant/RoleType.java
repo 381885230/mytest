@@ -54,14 +54,14 @@ public enum RoleType {
 	 * @return List<Kav>
 	 */
 	public static List<Kv> toKavs() {
-		List<Kv> l_kavs = new ArrayList<Kv>();
+		List<Kv> kvs = new ArrayList<Kv>();
 		RoleType[] enums = RoleType.values();
 		for (int i = 0; i < enums.length; i++) {
-			Kv kav = new Kv();
-			kav.setKey(enums[i].getKey().toString());
-			kav.setValue(enums[i].getValue());
-			l_kavs.add(kav);
+			Kv kv = new Kv();
+			kv.setKey(enums[i].getKey().toString());
+			kv.setValue(enums[i].getValue());
+			kvs.add(kv);
 		}
-		return l_kavs;
+		return kvs;
 	}
 }
