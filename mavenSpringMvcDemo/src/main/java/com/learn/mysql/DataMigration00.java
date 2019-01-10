@@ -1,4 +1,4 @@
-package com.learn.mysql;
+/*package com.learn.mysql;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -118,3 +118,4 @@ public class DataMigration00 {
 	
 	
 }
+*/
