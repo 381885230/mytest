@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ListTest {
 
-	static final int N = 50000;
+	static final int N = 500000;
 
 	static long timeList(List list) {
 		long start = System.currentTimeMillis();
