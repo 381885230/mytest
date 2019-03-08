@@ -3,11 +3,14 @@ package com.yj.mvcframework.servlet;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.URL;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,7 +41,7 @@ public class MyDispatcherServlet extends HttpServlet{
 	private static final String SCANPATH="scanPackage";
 	
 	//保存配置信息
-	private Properties p=new Properties();
+	private Properties properties=new Properties();
 	
 	//保存扫描到的类名
 	private List<String> classNames=new ArrayList<String>();
@@ -64,7 +67,7 @@ public class MyDispatcherServlet extends HttpServlet{
 		doLoadConfig(config.getInitParameter(LOCATION));
 		
 		//2.扫描所有相关的类
-		doScanner(p.getProperty(SCANPATH));
+		doScanner(properties.getProperty(SCANPATH));
 		
 		//3.初始化所有相关的实例，并保存到ioc容器
 		doInstance();
@@ -204,7 +207,7 @@ public class MyDispatcherServlet extends HttpServlet{
 		InputStream ins=null;
 		try {
 			ins=this.getClass().getClassLoader().getResourceAsStream(location);
-			p.load(ins);
+			properties.load(ins);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}finally{
@@ -219,8 +222,125 @@ public class MyDispatcherServlet extends HttpServlet{
 	}
 
 	protected void doGet(HttpServletRequest req,HttpServletResponse resp)throws ServletException,IOException{
+//		this.doPostForTestClientInfo(req, resp);
+//		this.doPostForClientHeader(req, resp);
+//		this.doPostForTest_getParameterMap(req, resp);
 		this.doPost(req, resp);
 	}
+	
+
+	/**
+     * 1.获得客户机信息
+     */
+	
+/*	　		getRequestURL方法返回客户端发出请求时的完整URL。
+	　　getRequestURI方法返回请求行中的资源名部分。
+	　　getQueryString 方法返回请求行中的参数部分。
+	　　getPathInfo方法返回请求URL中的额外路径信息。额外路径信息是请求URL中的位于Servlet的路径之后和查询参数之前的内容，它以“/”开头。
+	　　getRemoteAddr方法返回发出请求的客户机的IP地址。
+	　　getRemoteHost方法返回发出请求的客户机的完整主机名。
+	　　getRemotePort方法返回客户机所使用的网络端口号。
+	　　getLocalAddr方法返回WEB服务器的IP地址。
+	　　getLocalName方法返回WEB服务器的主机名。	*/
+	protected void doPostForTestClientInfo(HttpServletRequest request,HttpServletResponse response)throws ServletException,IOException{
+		        String requestUrl = request.getRequestURL().toString();//得到请求的URL地址
+		        String requestUri = request.getRequestURI();//得到请求的资源
+		        String queryString = request.getQueryString();//得到请求的URL地址中附带的参数
+		        String remoteAddr = request.getRemoteAddr();//得到来访者的IP地址
+		        String remoteHost = request.getRemoteHost();//返回发出请求的客户机的完整主机名
+		        int remotePort = request.getRemotePort();//返回客户机所使用的网络端口号
+		        String remoteUser = request.getRemoteUser();
+		        String method = request.getMethod();//得到请求URL地址时使用的方法
+		        String pathInfo = request.getPathInfo();
+		        String localAddr = request.getLocalAddr();//获取WEB服务器的IP地址
+		        String localName = request.getLocalName();//获取WEB服务器的主机名
+		        response.setCharacterEncoding("UTF-8");//设置将字符以"UTF-8"编码输出到客户端浏览器
+		        //通过设置响应头控制浏览器以UTF-8的编码显示数据，如果不加这句话，那么浏览器显示的将是乱码
+		        response.setHeader("content-type", "text/html;charset=UTF-8");
+		        PrintWriter out = response.getWriter();
+		        out.write("获取到的客户机信息如下：");
+		        out.write("<hr/>");
+		        out.write("请求的URL地址："+requestUrl);
+		        out.write("<br/>");
+		        out.write("请求的资源："+requestUri);
+		        out.write("<br/>");
+		        out.write("请求的URL地址中附带的参数："+queryString);
+		        out.write("<br/>");
+		        out.write("来访者的IP地址："+remoteAddr);
+		        out.write("<br/>");
+		        out.write("来访者的主机名："+remoteHost);
+		        out.write("<br/>");
+		        out.write("使用的端口号："+remotePort);
+		        out.write("<br/>");
+		        out.write("remoteUser："+remoteUser);
+		        out.write("<br/>");
+		        out.write("请求使用的方法："+method);
+		        out.write("<br/>");
+		        out.write("pathInfo："+pathInfo);
+		        out.write("<br/>");
+		        out.write("localAddr："+localAddr);
+		        out.write("<br/>");
+		        out.write("localName："+localName);
+	}
+	
+/*	2.2、获得客户机请求头
+	　　getHeader(string name)方法:String 
+	　　getHeaders(String name)方法:Enumeration 
+	　　getHeaderNames()方法*/
+	protected void doPostForClientHeader(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setCharacterEncoding("UTF-8");// 设置将字符以"UTF-8"编码输出到客户端浏览器
+		// 通过设置响应头控制浏览器以UTF-8的编码显示数据
+		response.setHeader("content-type", "text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		Enumeration<String> reqHeadInfos = request.getHeaderNames();// 获取所有的请求头
+		out.write("获取到的客户端所有的请求头信息如下：");
+		out.write("<hr/>");
+		while (reqHeadInfos.hasMoreElements()) {
+			String headName = (String) reqHeadInfos.nextElement();
+			String headValue = request.getHeader(headName);// 根据请求头的名字获取对应的请求头的值
+			out.write(headName + ":" + headValue);
+			out.write("<br/>");
+		}
+		out.write("<br/>");
+		out.write("获取到的客户端Accept-Encoding请求头的值：");
+		out.write("<hr/>");
+		String value = request.getHeader("Accept-Encoding");// 获取Accept-Encoding请求头对应的值
+		out.write(value);
+
+		Enumeration<String> e = request.getHeaders("Accept-Encoding");
+		while (e.hasMoreElements()) {
+			String string = (String) e.nextElement();
+			System.out.println(string);
+		}
+	}
+	
+	
+/*	
+ * 获得客户机请求参数(客户端提交的数据)
+	getParameter(String)方法(常用--获取单个参数时)
+	getParameterValues(String name)方法(常用--获取多个参数时)
+	getParameterNames()方法(不常用)
+	getParameterMap()方法(编写框架时常用)
+	*/
+	protected void doPostForTest_getParameterMap(HttpServletRequest request, HttpServletResponse response){
+		//request对象封装的参数是以Map的形式存储的
+        Map<String, String[]> paramMap = request.getParameterMap();
+        for(Map.Entry<String, String[]> entry :paramMap.entrySet()){
+            String paramName = entry.getKey();
+            String paramValue = "";
+            String[] paramValueArr = entry.getValue();
+            for (int i = 0; paramValueArr!=null && i < paramValueArr.length; i++) {
+                if (i == paramValueArr.length-1) {
+                    paramValue+=paramValueArr[i];
+                }else {
+                    paramValue+=paramValueArr[i]+",";
+                }
+            }
+            System.out.println(MessageFormat.format("{0}={1}", paramName,paramValue));
+        }		
+	}
+	
 	
 	/**
 	 * 执行业务处理

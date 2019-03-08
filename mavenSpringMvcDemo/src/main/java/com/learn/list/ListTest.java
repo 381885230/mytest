@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ListTest {
 
-	static final int N = 50000;
+	static final int N = 300000;
 
 	static long timeList(List list) {
 		long start = System.currentTimeMillis();
@@ -42,7 +42,7 @@ public class ListTest {
 		List list1 = addList(new ArrayList<>());
 		List list2 = addList(new LinkedList<>());
 		System.out.println("ArrayList查找" + N + "条耗时：" + readList(list1));
-		System.out.println("LinkedList查找" + N + "条耗时：" + timeList(list2));
+		System.out.println("LinkedList查找" + N + "条耗时：" + readList(list2));
 	}
 
 }
