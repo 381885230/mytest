@@ -18,7 +18,7 @@ public class GenericTest {
         getData(age);
         getData(number);
         
-        //getUpperNumberData(name); // 1
+//        getUpperNumberData(name); // 1
         getUpperNumberData(age);    // 2
         getUpperNumberData(number); // 3
     }
