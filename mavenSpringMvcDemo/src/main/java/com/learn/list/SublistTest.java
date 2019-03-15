@@ -22,7 +22,14 @@ public class SublistTest {
 		System.out.println(JSON.toJSONString(s0));
 		System.out.println(JSON.toJSONString(s1));
 		System.out.println(JSON.toJSONString(s2));
-	
+		
+		List<String> s3=new ArrayList<>();
+		s3.addAll(s0);
+		s3.addAll(s1);
+		s3.addAll(s2);
+
+		System.out.println(JSON.toJSONString(s3));
+
 	}
 }
 
