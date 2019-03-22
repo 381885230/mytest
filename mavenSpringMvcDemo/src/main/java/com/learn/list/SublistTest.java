@@ -24,7 +24,6 @@ public class SublistTest {
 		System.out.println(JSON.toJSONString(s1));
 		System.out.println(JSON.toJSONString(s2));
 		
-<<<<<<< HEAD
 		System.out.println(list.contains("aa"));
 		System.out.println(list.contains("aax"));
 		System.out.println(list.containsAll(s0));
@@ -33,16 +32,7 @@ public class SublistTest {
 		s3.add("aa");
 		s3.add("xx");
 		System.out.println(list.containsAll(s3));
-	
-=======
-		List<String> s3=new ArrayList<>();
-		s3.addAll(s0);
-		s3.addAll(s1);
-		s3.addAll(s2);
 
-		System.out.println(JSON.toJSONString(s3));
-
->>>>>>> branch 'master' of https://github.com/381885230/mytest.git
 	}
 }
 
