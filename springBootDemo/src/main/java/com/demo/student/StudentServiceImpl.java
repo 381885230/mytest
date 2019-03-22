@@ -15,4 +15,10 @@ public class StudentServiceImpl implements StudentService {
 		return 100;
 	}
 
+    @LogAnnotation(moduleName="ser运动", operation = "ser跑步")
+	@Override
+	public void running(int i) {
+		System.out.println("running for "+i);
+	}
+
 }

@@ -6,9 +6,12 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
+import com.alibaba.fastjson.JSON;
 
 @Component
 @Aspect
@@ -26,6 +29,9 @@ public class LogAspect {
 	@After("entryPoint()")
 	public void after(JoinPoint joinPoint) {
 		try {
+			LogAnnotation logAnnotation = ((MethodSignature) joinPoint.getSignature()).getMethod().getAnnotation(LogAnnotation.class);
+			System.out.println("logAnnotation="+JSON.toJSONString(logAnnotation));
+			
 			String targetName = joinPoint.getTarget().getClass().getName();
 			String methodName = joinPoint.getSignature().getName();
 			Object[] arguments = joinPoint.getArgs();

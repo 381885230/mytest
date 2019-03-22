@@ -20,4 +20,10 @@ public class StuServiceTest {
     public void getCount() {
     	System.out.println(studentServiceImpl.getStuCount());
     }
+    
+    
+    @Test
+    public void testRun(){
+    	studentServiceImpl.running(20);
+    }
 }
