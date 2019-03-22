@@ -1,0 +1,28 @@
+#建表
+CREATE TABLE `course` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf-8;
+
+CREATE TABLE `stu_course` (
+  `sc_id` int(11) NOT NULL AUTO_INCREMENT,
+  `s_id` int(11) DEFAULT NULL,
+  `c_id` int(11) DEFAULT NULL,
+  `score` int(11) DEFAULT NULL,
+  PRIMARY KEY (`sc_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf-8;
+
+CREATE TABLE `student` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf-8;
+
+
+CREATE index sc_s_id_index on SC(s_id);
+show index from SC;
+
+alter table SC drop index sc_c_id_index;
+alter table SC drop index sc_score_index;
+create index sc_c_id_score_index on SC(c_id,score);
