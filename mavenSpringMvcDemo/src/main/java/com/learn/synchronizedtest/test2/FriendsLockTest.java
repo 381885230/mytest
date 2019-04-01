@@ -17,15 +17,15 @@ public class FriendsLockTest {
 	 * 模拟无锁
 	 */
 	public static void calc0(){
-			System.out.println(Thread.currentThread().getName()+" begin calc,time="+System.currentTimeMillis());
-			try {
-				Thread.sleep(100);
-				System.out.println(Thread.currentThread().getName()+" insert 100 to DB");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			System.out.println(Thread.currentThread().getName()+" end calc,time="+System.currentTimeMillis());
-			System.out.println("-----------------------------");
+		System.out.println(Thread.currentThread().getName()+" begin calc,time="+System.currentTimeMillis());
+		try {
+			Thread.sleep(100);
+			System.out.println(Thread.currentThread().getName()+" insert 100 to DB");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(Thread.currentThread().getName()+" end calc,time="+System.currentTimeMillis());
+		System.out.println("-----------------------------");
 	}	
 	
 	
@@ -53,15 +53,15 @@ public class FriendsLockTest {
 	 */
 	public static void calc2(){
 		synchronized (FriendsLockTest.class) {
-			System.out.println(Thread.currentThread().getName()+" begin calc,time="+System.currentTimeMillis());
-			try {
-				Thread.sleep(100);
-				System.out.println(Thread.currentThread().getName()+" insert 100 to DB");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			System.out.println(Thread.currentThread().getName()+" end calc,time="+System.currentTimeMillis());
-			System.out.println("-----------------------------");
+		System.out.println(Thread.currentThread().getName()+" begin calc,time="+System.currentTimeMillis());
+		try {
+			Thread.sleep(100);
+			System.out.println(Thread.currentThread().getName()+" insert 100 to DB");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(Thread.currentThread().getName()+" end calc,time="+System.currentTimeMillis());
+		System.out.println("-----------------------------");
 		}
 	}
 	
