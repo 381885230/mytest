@@ -33,6 +33,10 @@ public class SublistTest {
 		s3.add("xx");
 		System.out.println(list.containsAll(s3));
 
+		List<String> s4=list.subList(6, 6);
+		System.out.println(s4);
+
+		
 	}
 }
 
