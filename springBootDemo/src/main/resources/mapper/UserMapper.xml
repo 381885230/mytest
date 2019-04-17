@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.transaction.user.dao.UserDao">
+	 <resultMap id="BaseResultMap" type="com.transaction.user.model.User">
+	    <id column="id" jdbcType="INTEGER" property="id" />
+	    <id column="user_id" jdbcType="INTEGER" property="userId" />
+	    <id column="invite_code" jdbcType="VARCHAR" property="inviteCode" />
+	    <id column="my_invite_code" jdbcType="VARCHAR" property="myInviteCode" />
+	  </resultMap>
+
+	<select id="getNameById" parameterType="com.transaction.user.model.User" resultMap="BaseResultMap">
+		SELECT * FROM t_user WHERE ID = #{id}
+	</select>
+	
+	<update id="updateById" parameterType="com.transaction.user.model.User">
+		update t_user set user_name=#{userName} where  ID = #{id}
+	</update>
+	
+</mapper>
