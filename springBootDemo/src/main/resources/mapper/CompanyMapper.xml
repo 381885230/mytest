@@ -9,8 +9,9 @@
 	    <id column="my_invite_code" jdbcType="VARCHAR" property="myInviteCode" />
 	  </resultMap>
 
+	<!-- SELECT * FROM t_company WHERE ID = #{id} -->
 	<select id="getNameById" parameterType="com.transaction.user.model.Company" resultMap="BaseResultMap">
-		SELECT * FROM t_company WHERE ID = #{id}
+		SELECT * FROM t_company WHERE ID = 1
 	</select>
 	
 	<update id="updateById" parameterType="com.transaction.user.model.Company">

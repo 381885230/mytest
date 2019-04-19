@@ -9,6 +9,7 @@
 	    <id column="my_invite_code" jdbcType="VARCHAR" property="myInviteCode" />
 	  </resultMap>
 
+	<!-- SELECT * FROM t_user WHERE ID = #{id}  -->
 	<select id="getNameById" parameterType="com.transaction.user.model.User" resultMap="BaseResultMap">
 		SELECT * FROM t_user WHERE ID = #{id}
 	</select>

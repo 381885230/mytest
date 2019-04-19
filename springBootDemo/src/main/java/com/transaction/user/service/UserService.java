@@ -2,7 +2,7 @@ package com.transaction.user.service;
 
 import com.transaction.user.model.User;
 
-public interface UserService {
+public interface UserService<T> {
 	
 	public User getNameById(User user);
 	
@@ -10,5 +10,6 @@ public interface UserService {
 	
 	public void update2();
 
+	public T getEntity(T t);
 
 }

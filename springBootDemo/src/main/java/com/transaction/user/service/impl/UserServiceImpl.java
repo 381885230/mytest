@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService{
 		return userDao.getNameById(user);
 	}
 	
-	@Transactional
+//	@Transactional
 	public void update1(){
 		User user=new User();
 		user.setId("1");
@@ -42,8 +42,8 @@ public class UserServiceImpl implements UserService{
 //		int a=1/0;
 		companyDao.updateById(comp);
 		
-		update2();
-//		context.getBean(UserServiceImpl.class).update2();
+		update2();//无事务，不可回滚
+//		context.getBean(UserServiceImpl.class).update2();//有事务，可回滚
 	}
 
 
@@ -54,10 +54,19 @@ public class UserServiceImpl implements UserService{
 		user.setUserName("什么");
 		Company comp=new Company();
 		comp.setId("2");
-		comp.setName("neteasy");
+		comp.setName("我是谁");
 		
 		userDao.updateById(user);
 		int b=1/0;//抛出异常触发回滚
 		companyDao.updateById(comp);		
+	}
+
+	@Override
+	public Object getEntity(Object t) {
+		if(t instanceof User){
+			return userDao.getNameById((User)t);
+		}else{
+			return companyDao.getNameById((Company)t);
+		}
 	}
 }
