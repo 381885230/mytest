@@ -4,9 +4,7 @@
 <mapper namespace="com.transaction.user.dao.CompanyDao">
 	 <resultMap id="BaseResultMap" type="com.transaction.user.model.Company">
 	    <id column="id" jdbcType="INTEGER" property="id" />
-	    <id column="user_id" jdbcType="INTEGER" property="userId" />
-	    <id column="invite_code" jdbcType="VARCHAR" property="inviteCode" />
-	    <id column="my_invite_code" jdbcType="VARCHAR" property="myInviteCode" />
+	    <id column="name" jdbcType="VARCHAR" property="name" />
 	  </resultMap>
 
 	<!-- SELECT * FROM t_company WHERE ID = #{id} -->
